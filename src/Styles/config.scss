@@ -1,0 +1,91 @@
+// colors
+$primary-color: #3d72a4;
+$primary-active: #6092c2;
+$background-color: #18191a;
+$secondary-bg: #252526;
+$border-color: rgb(190, 190, 190);
+$menu-width: 300px;
+$h1-font: 3rem;
+$h2-font: 1.9rem;
+$p-font: 1.2rem;
+
+$primary-purple: #9a54b3;
+$secondary-purple: #512888;
+$active-link: #9b57f5;
+
+// height
+$nav-height: 100px;
+
+@mixin slow-transition {
+  transition: all 0.3s linear;
+}
+
+@mixin nav-transition {
+  transition: all 0.3s ease-out;
+}
+
+@mixin page-links {
+  background-color: $secondary-purple;
+  padding: 7px;
+  border-radius: 25px;
+  letter-spacing: 1px;
+  @include slow-transition();
+
+  &:hover {
+    background-color: $primary-purple;
+  }
+
+  &:active {
+    background-color: white;
+    color: $active-link;
+  }
+}
+
+@mixin button-styles {
+  background-color: $secondary-purple;
+  padding: 7px;
+  border-radius: 25px;
+  letter-spacing: 3px;
+  border-color: transparent;
+  color: white;
+  @include slow-transition();
+
+  &:hover {
+    background-color: $primary-purple;
+  }
+
+  &:active {
+    background-color: white;
+    color: $secondary-purple;
+  }
+}
+
+@mixin for-mobile {
+  @media screen and (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin for-in-between {
+  @media (min-width: 600px) and (max-width: 950px) {
+    @content;
+  }
+}
+
+@mixin for-desktop {
+  @media screen and (min-width: 601px) {
+    @content;
+  }
+}
+
+@mixin for-larger-desktop {
+  @media screen and (min-width: 950px) {
+    @content;
+  }
+}
+
+@mixin for-much-larger-desktop {
+  @media screen and (min-width: 1250px) {
+    @content;
+  }
+}

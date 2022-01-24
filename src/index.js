@@ -1,12 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
+import Today from './Routes/Today';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Homepage from './Homepage';
+import Apodrange from './Routes/Apodrange';
+import About from './Routes/About';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route path="homepage" element={<Homepage />} />
+          <Route path="today" element={<Today />} />
+          <Route path="range" element={<Apodrange />} />
+          <Route path="about" element={<About />} />
+          <Route 
+            index
+            element={<Homepage />}
+          />
+        </Route>
+        <Route 
+          path="*"
+          element={
+            <main style={{ padding: "1rem" }}>
+              <p>Oops! Wrong path!</p>
+              <Link to="/">Return home</Link>
+            </main>
+          }
+        />
+      </Routes>      
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
