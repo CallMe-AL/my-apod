@@ -11,7 +11,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'build')))
   .use(cors({credentials: true}));
 
-const port = process.env.REACT_APP_PORT || 3001;
+const port = process.env.PORT || 3001;
 const key = process.env.REACT_APP_API_KEY;
 const url = `https://api.nasa.gov/planetary/apod?api_key=${key}`;
 
