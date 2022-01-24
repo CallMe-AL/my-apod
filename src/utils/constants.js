@@ -1,1 +1,0 @@
-export const BASE_API_URL = 'https://my-apod.herokuapp.com';

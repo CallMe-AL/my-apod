@@ -1,0 +1,109 @@
+header {
+  position: sticky;
+
+  z-index: 5;
+  background-color: $secondary-bg;
+
+  .header-wrap {
+    max-width: 1800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    flex-shrink: 0;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    height: $nav-height;
+
+    .mobile-nav-toggle {
+      display: block;
+      position: absolute;
+      z-index: 9999;
+      background-color: transparent;
+      border: none;
+      color: white;
+      width: 2rem;
+      aspect-ratio: 1;
+      top: 2rem;
+      right: 2rem;
+
+      .fa-bars {
+        font-size: 2rem;
+        &.closed {
+          display: none;
+        }
+      }
+
+      .fa-times {
+        font-size: 2rem;
+        &.closed {
+          display: none;
+        }
+      }
+    }
+
+    .logo-container {
+      flex: 1;
+      .logo {
+        font-weight: 700;
+        letter-spacing: 1px;
+        font-size: 1.6rem;
+        padding: 8px;
+
+        span {
+          color: $primary-purple;
+        }
+      }
+    }
+
+    nav {
+      font-size: 1.2rem;
+      flex: 2;
+      height: 100%;
+      display: flex;
+      padding-left: 2rem;
+      justify-content: flex-end;
+      @include nav-transition;
+      position: relative;
+
+      transform: translateX(100%);
+
+      &[data-visible="true"] {
+        transform: translateX(0%);
+      }
+
+      ul {
+        display: flex;
+        flex-direction: column;
+
+        li {
+          margin-bottom: 25px;
+
+          a {
+            @include slow-transition;
+            &:hover {
+              color: $primary-purple;
+            }
+
+            &.active-link {
+              color: $active-link;
+              position: relative;
+
+              &:after {
+                position: absolute;
+                content: "";
+                display: block;
+                bottom: -5px;
+                left: 0;
+                height: 2px;
+                width: 100%;
+                background: $active-link;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
