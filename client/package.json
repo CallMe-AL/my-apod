@@ -200,7 +200,8 @@
     "escape-string-regexp": "^1.0.5",
     "escodegen": "^2.0.0",
     "eslint": "^8.7.0",
-    "eslint-import-resolver-node": "^0.3.6",
+    "eslint-config-react-app": "^7.0.0",
+    "eslint-import-resolver-node": "^0.3.6",    
     "eslint-module-utils": "^2.7.2",
     "eslint-plugin-flowtype": "^8.0.3",
     "eslint-plugin-import": "^2.25.4",
@@ -794,8 +795,5 @@
       "react-app",
       "react-app/jest"
     ]
-  },
-  "devDependencies": {
-    "eslint-config-react-app": "^7.0.0"
   }
 }
