@@ -789,11 +789,5 @@
     "eject": "react-scripts eject"
   },
   "author": "",
-  "license": "ISC",
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  }
+  "license": "ISC"
 }
