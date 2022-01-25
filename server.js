@@ -25,7 +25,7 @@ app.get('/api/single-img', (req, res) => {
   console.log('connection received!');
   request(url, (error, response, body) => {
     if (!error && response.statusCode === 200) {
-      res.json(body);
+      res.send(body);
     } else {
       console.log(error);
     }

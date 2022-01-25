@@ -10,7 +10,7 @@ export default function useGetSingleAPOD(today) {
       const response = fetch(`${BASE_API_URL}/api/single-img`, {
         method: 'GET'
       })
-      // .then(response => response.json())
+      .then(response => response.json())
       .then(data => {
         setImage(data);
         localStorage.setItem('currentDay', JSON.stringify(data));
