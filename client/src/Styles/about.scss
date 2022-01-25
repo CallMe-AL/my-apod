@@ -34,7 +34,6 @@
       bottom: -12px;
       left: 50%;
       margin-left: -100px;
-      // transform: translateX(50%);
     }
   }
 
@@ -53,7 +52,7 @@
           @include slow-transition;
 
           &:hover {
-            color: $secondary-purple;
+            color: $active-link;
           }
 
           &:active {

@@ -31,7 +31,7 @@ const RangeVideo = ({ apod, index, setActiveItem, activeItem, setActiveApod }) =
           <h2>About this video</h2>
           <p className="apod-explanation">{apod.explanation}</p>
           {apod.copyright && <p className="apod-copyright"><span>Copyright: </span>{apod.copyright}</p>}
-          <a href={apod.url} className="apod-url">Click to open image in window</a>
+          <a href={apod.url} target="_blank" rel="noreferrer noopener" className="apod-url">Open image in a new window</a>
         </div>
       </div>
       <div className="apod-bottom-container">

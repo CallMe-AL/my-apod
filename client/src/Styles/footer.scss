@@ -1,7 +1,5 @@
 footer {
-  // min-height: 100px;
   background-color: $secondary-bg;
-  // padding-bottom: 20px;
 
   .footer-wrap {
     max-width: 1800px;
@@ -32,12 +30,12 @@ footer {
           }
 
           &:hover {
-            color: $primary-purple;
+            color: $secondary-purple;
           }
 
           &:active {
-            border-color: $primary-purple;
-            color: $primary-purple;
+            border-color: $secondary-purple;
+            color: $secondary-purple;
           }
         }
       }

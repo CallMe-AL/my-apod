@@ -8,6 +8,7 @@
 @import "nasaobj.scss";
 @import "footer.scss";
 @import "responsive.scss";
+@import url("https://fonts.googleapis.com/css2?family=Merriweather&family=Overpass:wght@200&display=swap");
 
 * {
   margin: 0;
@@ -15,12 +16,16 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow: auto;
+}
+
 html,
 body {
   background: $background-color;
   color: white;
   height: 100%;
-  overflow-x: hidden;
+  font-family: "Overpass", sans-serif;
 }
 
 a {
@@ -31,6 +36,12 @@ a {
   &:focus {
     border-color: $primary-purple;
   }
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Merriweather", serif;
 }
 
 ul {

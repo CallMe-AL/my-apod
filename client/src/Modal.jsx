@@ -8,7 +8,6 @@ const Modal = ({ apod, open, setOpen }) => {
 
   return (
     <div className={open ? 'modal-overlay open' : 'modal-overlay'} onClick={closeModal}>
-      
       <div className="modal-img-container">
         <img src={apod.url} alt="" className="modal-img"/>
         <button className="close-modal-btn" aria-label="close modal button" onClick={closeModal}>

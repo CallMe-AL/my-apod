@@ -14,19 +14,18 @@ header {
     top: 0;
     left: 0;
     margin: 0 auto;
-    height: $nav-height;
 
     .mobile-nav-toggle {
       display: block;
-      position: absolute;
-      z-index: 9999;
       background-color: transparent;
       border: none;
       color: white;
       width: 2rem;
       aspect-ratio: 1;
-      top: 2rem;
-      right: 2rem;
+      right: 1rem;
+      top: 1.2rem;
+      position: absolute;
+      z-index: 9999;
 
       .fa-bars {
         font-size: 2rem;
@@ -83,11 +82,11 @@ header {
           a {
             @include slow-transition;
             &:hover {
-              color: $primary-purple;
+              color: $secondary-purple;
             }
 
             &.active-link {
-              color: $active-link;
+              color: $primary-purple;
               position: relative;
 
               &:after {
@@ -98,7 +97,7 @@ header {
                 left: 0;
                 height: 2px;
                 width: 100%;
-                background: $active-link;
+                background: $primary-purple;
               }
             }
           }

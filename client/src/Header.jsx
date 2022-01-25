@@ -16,17 +16,17 @@ const Header = () => {
   return (
     <header>
       <div className="header-wrap">
+        <div className='logo-container'>
+          <Link to="/" className='logo'>my<span>APOD</span></Link>
+        </div> 
         <button className="mobile-nav-toggle" 
                 aria-controls="primary-navigation"
                 aria-expanded={open ? "true" : "false"}
                 onClick={() => toggleNav()}>
           <div className="sr-only">Menu</div>
           {open ? <i className="fas fa-times"></i> : <i className="fas fa-bars"></i>} 
-        </button>
-        <div className='logo-container'>
-          <Link to="/" className='logo'>my<span>APOD</span></Link>
-        </div>        
-        <nav id="primary-navigation" data-visible={open ? 'true' : 'false'}>
+        </button>       
+        <nav className="primary-navigation" data-visible={open ? 'true' : 'false'}>
           <ul>
             <li>
               <NavLink

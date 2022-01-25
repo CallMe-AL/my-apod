@@ -12,7 +12,7 @@ const ApodExp = ({ activeApod }) => {
       <h2 className="__title">{activeApod.title}</h2>
       <p className="__explanation">{activeApod.explanation}</p>
       {activeApod.copyright && <p className="__copyright"><span>Copyright: </span>{activeApod.copyright}</p>}
-      <a href={activeApod.url} className="__url">Click to open image in window</a>
+      <a href={activeApod.url} target="_blank" rel="noreferrer noopener" className="__url">Open image in a new window</a>
     </div>
   )
 }

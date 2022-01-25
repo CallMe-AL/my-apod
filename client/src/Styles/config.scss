@@ -4,14 +4,19 @@ $primary-active: #6092c2;
 $background-color: #18191a;
 $secondary-bg: #252526;
 $border-color: rgb(190, 190, 190);
+$light-white: rgb(218, 218, 218);
 $menu-width: 300px;
 $h1-font: 3rem;
 $h2-font: 1.9rem;
 $p-font: 1.2rem;
 
-$primary-purple: #9a54b3;
-$secondary-purple: #512888;
-$active-link: #9b57f5;
+// old values just in case :)
+// $primary-purple: #9a54b3;
+// $secondary-purple: #512888;
+// $active-link: #9b57f5;
+$primary-purple: #c498ff;
+$secondary-purple: #9a54b3;
+$active-link: blueviolet;
 
 // height
 $nav-height: 100px;
@@ -51,12 +56,12 @@ $nav-height: 100px;
   @include slow-transition();
 
   &:hover {
-    background-color: $primary-purple;
+    background-color: $active-link;
   }
 
   &:active {
     background-color: white;
-    color: $secondary-purple;
+    color: $active-link;
   }
 }
 

@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import Today from './Routes/Today';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { HashRouter, Routes, Route, Link } from 'react-router-dom';
 import Homepage from './Homepage';
 import Apodrange from './Routes/Apodrange';
 import About from './Routes/About';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="homepage" element={<Homepage />} />
@@ -32,7 +32,7 @@ ReactDOM.render(
           }
         />
       </Routes>      
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -4,6 +4,7 @@ import useGetDate from "../Hooks/useGetDate";
 import RangeImage from '../RangeImage.jsx';
 import RangeVideo from '../RangeVideo.jsx';
 import { BASE_API_URL } from '../utils/constants';
+import JumpToTopBtn from '../JumpToTopBtn';
 
 const Apodrange = () => {
 
@@ -19,12 +20,24 @@ const Apodrange = () => {
   const [activeItem, setActiveItem] = useState('');
   const [activeApod, setActiveApod] = useState(null);
 
+  function convertDateToMs(value) {
+    let newDate = new Date(value);
+    let dateInMs = newDate.getDate();
+    return dateInMs;
+  }
+
   function handleStartDate(e) {
     let value = e.target.value;
-    // let newValue = increaseDay(value);
-    if (!value) {
-      console.log('clear!');
-      console.log(value);
+    let valueInMs = convertDateToMs(value);
+    let endInMs = convertDateToMs(endDate);
+
+    // date checks for browsers that don't support min/max attributes for date picker
+    if (valueInMs > now.getDate()) {
+      setWarning('The start date can\'t be a date later than today... yet...');
+      return;
+    } else if (valueInMs > endInMs) {
+      setWarning('The start date can\'t be later than the end date, silly!');
+      return;
     }
     setStartDate(value);
     sessionStorage.setItem('start-date', value);
@@ -32,7 +45,18 @@ const Apodrange = () => {
 
   function handleEndDate(e) {
     let value = e.target.value;
-    // let newValue = increaseDay(value);
+    let valueInMs = convertDateToMs(value);
+    let startInMs = convertDateToMs(startDate);
+
+    // date checks for browsers that don't support min/max attributes for date picker
+    if (valueInMs > now.getDate()) {
+      setWarning('The end date can\'t be a date later than today... yet...');
+      return;
+    } else if (valueInMs < startInMs) {
+      setWarning('The end date can\'t be earlier than the start date, silly!');
+      return;
+    }
+
     setEndDate(value);
     sessionStorage.setItem('end-date', value);
     console.log(value);
@@ -129,7 +153,7 @@ const Apodrange = () => {
           {apods && <ApodExp activeApod={activeApod} /> }
         </aside>
       </div>
-      
+      <JumpToTopBtn />
     </div>
   )
 }

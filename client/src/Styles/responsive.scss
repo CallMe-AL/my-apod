@@ -16,6 +16,7 @@
 @include for-desktop {
   header {
     .header-wrap {
+      height: $nav-height;
       .mobile-nav-toggle {
         display: none;
       }
@@ -57,6 +58,15 @@
 
   .apod-video {
     width: 400px;
+  }
+
+  .range-div {
+    .jump-to-top-btn {
+      height: 50px;
+      width: 50px;
+      bottom: 100px;
+      right: 150px;
+    }
   }
 }
 
