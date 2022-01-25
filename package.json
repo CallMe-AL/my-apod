@@ -20,6 +20,7 @@
     "express": "^4.17.2",
     "nodemon": "^2.0.15",
     "path": "^0.12.7",
-    "postman-request": "^2.88.1-postman.31"
+    "postman-request": "^2.88.1-postman.31",
+    "react-scripts": "^5.0.0"
   }
 }
