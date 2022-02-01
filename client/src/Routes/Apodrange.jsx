@@ -22,7 +22,8 @@ const Apodrange = () => {
 
   function convertDateToMs(value) {
     let newDate = new Date(value);
-    let dateInMs = newDate.getDate();
+    let dateInMs = newDate.getTime();
+    console.log('date:', dateInMs);
     return dateInMs;
   }
 
@@ -32,7 +33,7 @@ const Apodrange = () => {
     let endInMs = convertDateToMs(endDate);
 
     // date checks for browsers that don't support min/max attributes for date picker
-    if (valueInMs > now.getDate()) {
+    if (valueInMs > now.getTime()) {
       setWarning('The start date can\'t be a date later than today... yet...');
       return;
     } else if (valueInMs > endInMs) {
@@ -49,7 +50,7 @@ const Apodrange = () => {
     let startInMs = convertDateToMs(startDate);
 
     // date checks for browsers that don't support min/max attributes for date picker
-    if (valueInMs > now.getDate()) {
+    if (valueInMs > now.getTime()) {
       setWarning('The end date can\'t be a date later than today... yet...');
       return;
     } else if (valueInMs < startInMs) {
@@ -59,7 +60,6 @@ const Apodrange = () => {
 
     setEndDate(value);
     sessionStorage.setItem('end-date', value);
-    console.log(value);
   }
 
   const getPictures = (e) => {

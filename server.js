@@ -6,14 +6,14 @@ const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config();
 
+const port = process.env.PORT || 3001;
+const key = process.env.REACT_APP_API_KEY;
+const url = `https://api.nasa.gov/planetary/apod?api_key=${key}`;
+
 const app = express();
 
 app.use(express.static(path.join(__dirname, 'client/build')))
   .use(cors({credentials: true}));
-
-const port = process.env.PORT || 3001;
-const key = process.env.REACT_APP_API_KEY;
-const url = `https://api.nasa.gov/planetary/apod?api_key=${key}`;
 
 app.get('/', (req, res) => {
   console.log('hello');
@@ -27,7 +27,7 @@ app.get('/api/single-img', (req, res) => {
     if (!error && response.statusCode === 200) {
       res.send(body);
     } else {
-      console.log(error);
+      console.log(response.statusCode);
     }
   })
 });
@@ -43,11 +43,15 @@ app.get('/api/range-imgs', (req, res) => {
     if (!error && response.statusCode === 200) {
       res.send(body);
     } else {
-      console.log(error);
+      console.log(response.statusCode);
     }
   });
 
 });
+
+app.get('/test', (req, res) => {
+  res.send('hello!');
+})
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

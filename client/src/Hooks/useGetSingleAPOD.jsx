@@ -14,6 +14,9 @@ export default function useGetSingleAPOD(today) {
       .then(data => {
         setImage(data);
         localStorage.setItem('currentDay', JSON.stringify(data));
+      })
+      .catch(error => {
+        console.log(error);
       });
     };
 
