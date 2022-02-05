@@ -7,15 +7,20 @@ const Today = () => {
 
   const [apod, setApod] = useState(null);
   const [openInfo, setOpenInfo] = useState(false);
+  const [err, setErr] = useState(null);
 
   let date = new Date();
   const today = useGetDate(date);
   const data = useGetSingleAPOD(today);
 
   useEffect(() => {
-    
-    setApod(data);
-    console.log(data);
+    if (data) {
+      if (data.error) {
+        setErr(data);
+      } else {
+        setApod(data);
+      }
+    }
   }, [data]);
 
   const showInfo = () => {
@@ -29,10 +34,12 @@ const Today = () => {
   if (!apod) {
     return (
     <div className='today-wrap'>
-      Loading...
+      {err 
+        ? err.error
+        : 'Loading...'
+      }
       <div className="loader"></div>
     </div>)
-
   }
 
   return (

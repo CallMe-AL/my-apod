@@ -3,6 +3,7 @@ import { BASE_API_URL } from '../utils/constants';
 
 export default function useGetSingleAPOD(today) {
   const [image, setImage] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {    
 
@@ -12,8 +13,13 @@ export default function useGetSingleAPOD(today) {
       })
       .then(response => response.json())
       .then(data => {
-        setImage(data);
-        localStorage.setItem('currentDay', JSON.stringify(data));
+        // if a status code other than 200 is sent back
+        if (data.error) {
+          setError(data);
+        } else {
+          setImage(data);
+          localStorage.setItem('currentDay', JSON.stringify(data));
+        }
       })
       .catch(error => {
         console.log(error);
@@ -35,5 +41,9 @@ export default function useGetSingleAPOD(today) {
 
   }, []);
 
-  return image;
+  if (image) {
+    return image;
+  } else if (error) {
+    return error;
+  }
 }

@@ -156,6 +156,9 @@
   // apod range
   .range-div {
     padding-top: 20px;
+    .ui-text {
+      padding-left: 0px;
+    }
     .selection-div {
       margin: 0 auto;
       width: 800px;

@@ -23,7 +23,6 @@ const Apodrange = () => {
   function convertDateToMs(value) {
     let newDate = new Date(value);
     let dateInMs = newDate.getTime();
-    console.log('date:', dateInMs);
     return dateInMs;
   }
 
@@ -80,7 +79,7 @@ const Apodrange = () => {
       return;
     }
 
-    setLoading('Loading...');
+    setLoading('Loading... wider ranges may take a bit longer...');
     setWarning('');
 
     const query = `?start_date=${startDate}&end_date=${endDate}`;
@@ -90,9 +89,15 @@ const Apodrange = () => {
     })
     .then(res => res.json())
     .then(data => {
-      setLoading('');
-      setApods(data);
-      sessionStorage.setItem('current-range', JSON.stringify(data));
+      // if nasa's servers are having issues
+      if (data.error) {
+        setLoading(data.error);
+      } else {
+        setLoading('');
+        setApods(data);
+        sessionStorage.setItem('current-range', JSON.stringify(data));
+      }
+      
     })
     .catch(err => console.log(err));
     

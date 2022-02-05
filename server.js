@@ -26,6 +26,8 @@ app.get('/api/single-img', (req, res) => {
   request(url, (error, response, body) => {
     if (!error && response.statusCode === 200) {
       res.send(body);
+    } else if (response.statusCode > 499 && response.statusCode < 600) {
+      res.send({error: `Sorry, NASA\'s servers are current having internal issues. Please try again later. Status code: ${response.statusCode}.`});
     } else {
       console.log(response.statusCode);
     }
@@ -39,9 +41,11 @@ app.get('/api/range-imgs', (req, res) => {
   let newUrl = url + `&start_date=${start_date}&end_date=${end_date}`;
 
   request(newUrl, (error, response, body) => {
-    console.log(newUrl);
+
     if (!error && response.statusCode === 200) {
       res.send(body);
+    } else if (response.statusCode > 499 && response.statusCode < 600) {
+      res.send({error: `Sorry, NASA\'s servers are current having internal issues. Please try again later. Status code: ${response.statusCode}.`});
     } else {
       console.log(response.statusCode);
     }
