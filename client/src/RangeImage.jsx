@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Modal from './Modal';
 
 const RangeImage = ({ apod, index, setActiveItem, activeItem, setActiveApod }) => {
 
   const [showInfo, setShowInfo] = useState(false);
   const [open, setOpen] = useState(false);
+  const [load, setLoad] = useState(false);
+  const imgRef = useRef(null);
 
   const openModal = (e) => {
 
@@ -16,6 +18,27 @@ const RangeImage = ({ apod, index, setActiveItem, activeItem, setActiveApod }) =
       setOpen(true);
     }
   }
+
+  useEffect(() => {
+
+    let options = {
+      root: null,
+      rootMargin: '0px 0px 0px 0px',
+      threshold: 0
+    }
+
+    const loadApod = (entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setLoad(true);
+          obs.disconnect();
+        } 
+      });
+    }
+
+    let observer = new IntersectionObserver(loadApod, options);
+    observer.observe(imgRef.current);
+  }, []);
 
   // listens for change in active index
   // compares index of this apod to the currently active index
@@ -40,8 +63,10 @@ const RangeImage = ({ apod, index, setActiveItem, activeItem, setActiveApod }) =
   return (
       <div className="multi-img-container">
         <p className="apod-date">{apod.date}</p>
-          <div className="img-container" onClick={openModal}>
-            <img src={apod.url} alt={apod.title} className="apod-img" />
+          <div className="img-container" 
+                onClick={openModal}
+                ref={imgRef}>
+            <img src={load && apod.url} alt={apod.title} className="apod-img" />
             <div className={showInfo ? 'apod-info visible' : 'apod-info'}>
               <h2>About this image</h2>
               <p className="apod-explanation">{apod.explanation}</p>
