@@ -44,8 +44,6 @@ const Single = () => {
     setLoading('Loading...');
     getPhoto(userDate);
     setUserDate(userDate);
-    console.log('user: ', userDate);
-    console.log('today: ', todaysDate);
   }
 
   const increaseDay = () => {
@@ -146,24 +144,22 @@ const Single = () => {
       </div>
 
       {apod && <NasaObj apod={apod} />}
-      {apod && 
-        <div className="single-nav">
+      <div className="single-nav">
           {/* hides button if on the earliest date */}
-          {userDate !== '1995-06-16' && 
+          {apod?.date !== '1995-06-16' && 
             <button className="previous-day" aria-label='go back a day' onClick={decreaseDay}>
               <FontAwesomeIcon icon={faChevronLeft} className="single-nav-icon-left" />
               Previous
             </button>        
           }
           {/* hides button if on today's date */}
-          {userDate !== todaysDate &&
+          {apod?.date !== todaysDate &&
             <button className="next-day" aria-label='go forward a day' onClick={increaseDay}>
               Next
               <FontAwesomeIcon icon={faChevronRight} className="single-nav-icon-right" />
             </button>        
           }
-        </div>      
-      }
+        </div>
 
       {apod && <Info apod={apod} />}
     </div>
