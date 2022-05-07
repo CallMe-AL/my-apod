@@ -9,7 +9,7 @@ const About = () => {
       <p>As for this site, it was begun mid-January 2022 by some web dev hobbyist who happens to like astronomy. It was mostly for practice, but I hope you find some value out of it, too!</p>
       <p>I'm hoping to add likes, personal profiles to save favorites, and more in the future. If something isn't updated or sucks, my bad (I'm improving though, I swear!)</p>
       <div className="useful-links-cont">
-        <h2>Here's some useful links you may like to explore: </h2>
+        <h2>Keep exploring: </h2>
         <ul className="useful-links">
           <li>
             <a className="useful-link" href="https://apod.nasa.gov/apod/astropix.html">THE APOD website!</a>

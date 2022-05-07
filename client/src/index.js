@@ -7,6 +7,7 @@ import { HashRouter, Routes, Route, Link } from 'react-router-dom';
 import Homepage from './Homepage';
 import Apodrange from './Routes/Apodrange';
 import About from './Routes/About';
+import Single from './Routes/Single';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,6 +16,7 @@ ReactDOM.render(
         <Route path="/" element={<App />}>
           <Route path="homepage" element={<Homepage />} />
           <Route path="today" element={<Today />} />
+          <Route path="single" element={<Single />} />
           <Route path="range" element={<Apodrange />} />
           <Route path="about" element={<About />} />
           <Route 

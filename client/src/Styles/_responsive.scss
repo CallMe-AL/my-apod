@@ -1,0 +1,471 @@
+@use "_config.scss";
+
+@include config.for-desktop {
+  // main header
+  .main-header {
+    .header-wrap {
+      height: config.$nav-height;
+      .mobile-nav-toggle {
+        display: none;
+      }
+
+      .primary-navigation {
+        align-items: center;
+        position: relative;
+        justify-content: flex-end;
+        flex-direction: row;
+        transform: translateX(0%);
+        background-color: transparent;
+        overflow: visible;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        &:after {
+          position: absolute;
+          content: "";
+          background: white;
+          display: block;
+          width: clamp(2rem, 20vw, 40%);
+          height: 2px;
+          margin-left: -4rem;
+          left: 0;
+          top: 50%;
+          @include config.slow-transition;
+        }
+
+        ul {
+          flex-direction: row;
+          font-size: 1.3rem;
+
+          li {
+            margin-right: 15px;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  // apod imgs
+  .apod-img {
+    width: 400px;
+  }
+
+  .apod-video {
+    width: 400px;
+  }
+
+  // range div
+  .range-div {
+    .jump-to-top-btn {
+      height: 50px;
+      width: 50px;
+      bottom: 75px;
+      right: 100px;
+    }
+  }
+
+  // single div
+  .single-div {
+    padding: 3rem 1.5rem;
+  
+    .single-header {
+      margin-bottom: 1.5rem;
+  
+      h1 {
+        margin-bottom: 0.7rem;
+      }
+    }
+  
+    .single-form-wrap {
+  
+      .start-container {
+        font-size: 1.2rem;
+        margin-bottom: 3rem;
+      }
+  
+      .update-btn {
+        @include config.button-styles;
+      }
+    }
+  
+    .ui-text {
+      margin-block: 1.5rem;
+      height: 1rem;
+    }
+  
+    .single-banner {
+      text-align: center;
+  
+      h2 {
+        font-size: 2rem;
+        color: config.$primary-purple;
+        margin-bottom: 1rem;
+      }
+    }
+  
+  
+  
+    .single-nav {
+      max-width: 400px;
+      margin: 2rem auto 3rem auto;
+  
+  
+      button {
+        padding: 0;
+        background-color: transparent;
+        border: none;
+        color: white;
+        border-radius: 1rem;
+  
+        .single-nav-icon-left {
+          margin-right: 0.5rem;
+          transition: all 500ms ease-out;
+        }
+  
+        .single-nav-icon-right {
+          margin-left: 0.5rem;
+          transition: all 500ms ease-out;
+        }
+      }
+    }
+  }
+
+  // footer
+  footer {
+  
+    .footer-wrap {
+  
+      p {
+        text-align: left;
+      }
+    }
+  }
+}
+
+@include config.for-larger-desktop {
+  // main header
+  .main-header {
+    .header-wrap {
+      .primary-navigation {
+        &:after {
+          width: 48%;
+        }
+        ul {
+          &:after {
+            width: 70%;
+            left: -20%;
+          }
+        }
+      }
+    }
+  }
+
+  // today
+  .today-wrap {
+    h1 {
+      font-size: 3rem;
+    }
+
+    .current-date {
+      font-size: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .desktop-info-container {
+      .apod-url {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  // modal
+  .modal-overlay {
+    .close-modal-btn {
+      right: -80px;
+
+      &:hover {
+        @include config.slow-transition;
+        color: config.$secondary-purple;
+      }
+
+      &:active {
+        color: white;
+      }
+    }
+  }
+
+  .apod-img {
+    width: 600px;
+  }
+
+  .apod-video {
+    width: 600px;
+  }
+
+  // homepage
+  .homepage-wrap {
+    .home-title {
+      font-size: config.$h1-font;
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+
+    .homepage-link {
+      font-size: 1.2rem;
+    }
+  }
+
+  // single imgs
+  .single-div {
+    padding: 3rem 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  
+    .single-header {
+      margin-bottom: 1.5rem;
+  
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.7rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+      }
+    }
+  
+    .ui-text {
+      margin-block: 1.5rem;
+      height: 1rem;
+    }
+  
+    .single-banner {
+      text-align: center;
+  
+      h2 {
+        font-size: 3rem;
+        color: config.$primary-purple;
+        margin-bottom: 1rem;
+      }
+  
+      p {
+        margin-bottom: 1rem;
+      }
+    }
+  
+  
+  
+    .single-nav {
+      max-width: 600px;
+      margin-bottom: 3.5rem;
+  
+  
+      button {
+        font-size: 1rem;
+  
+        .single-nav-icon-left {
+          margin-right: 0.5rem;
+          transition: all 500ms ease-out;
+        }
+  
+        .single-nav-icon-right {
+          margin-left: 0.5rem;
+          transition: all 500ms ease-out;
+        }
+      }
+    }
+  }
+
+  // apod range
+  .range-div {
+    .ui-text {
+      padding-left: 0px;
+    }
+    .selection-div {
+      margin: 0 auto;
+      padding-inline: 4rem;
+      width: 80%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h1 {
+        text-align: left;
+        flex: 1;
+      }
+
+      .date-div {
+        flex: 2;
+        form {          
+          display: flex;
+          justify-content: space-between;
+          gap: 2rem;
+          align-items: center;
+
+          label {
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 5px;
+          }
+
+          input {
+            font-size: 1rem;
+          }
+
+          .update-btn {
+            font-size: 0.9rem;
+            padding: 1.5rem 1.5rem;
+          }
+        }
+      }
+    }
+
+    .main-range-content-div {
+      .info-div {
+        display: block;
+      }
+      .images-cont {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-gap: 2rem;
+        flex: 1;
+
+        // images
+        .multi-img-container {
+          width: 380px;
+          position: relative;
+
+          &:hover {
+            .img-container {
+              position: relative;
+              &::after {
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                content: "";
+                background: linear-gradient(rgba(0, 0, 0, 0.8));
+              }
+            }
+            .apod-bottom-container {
+              opacity: 1;
+            }
+          }
+
+          .img-container {
+            // height: 350px;
+            .apod-info {
+              display: none;
+            }
+          }
+          .apod-bottom-container {
+            @include config.slow-transition;
+            position: absolute;
+            bottom: 10px;
+            padding: 5px;
+            width: 100%;
+            opacity: 0;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.8);
+          }
+        }
+
+        // video
+        .multi-apod-video {
+          width: 380px;
+          position: relative;
+
+          .video-container {
+            width: 100%;
+            margin-bottom: 10px;
+            position: relative;
+            overflow-y: hidden;
+
+            .apod-info {
+              display: none;
+            }
+          }
+
+          .apod-video {
+            width: 100%;
+            height: 100%;
+          }
+
+          .apod-bottom-container {
+            @include config.slow-transition;
+            position: absolute;
+            bottom: -30px;
+            padding: 5px;
+            width: 100%;
+            z-index: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .about-div {
+    h1 {
+      text-align: left;
+      font-size: config.$h1-font;
+    }
+    h2 {
+      font-size: config.$h2-font;
+    }
+
+    p {
+      font-size: config.$p-font;
+    }
+
+    p:last-of-type {
+      &::after {
+        width: 400px;
+        margin-left: -200px;
+        bottom: -18px;
+      }
+    }
+
+    a {
+      font-size: 1.1rem;
+    }
+  }
+
+  footer {
+    .footer-wrap {
+      .footer-social-links {
+        li {
+          .footer-link {
+            width: 45px;
+            height: 45px;
+            .fab {
+              font-size: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include config.for-much-larger-desktop {
+  .range-div {
+    .main-range-content-div {
+      .images-cont {
+        .multi-img-container {
+          width: 400px;
+        }
+
+        .multi-apod-video {
+          width: 400px;
+        }
+      }
+    }
+    .info-div {
+      margin-left: 20px;
+    }
+  }
+}

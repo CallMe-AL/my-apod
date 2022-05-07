@@ -1,0 +1,223 @@
+@use "_config.scss";
+
+.main-header {
+  position: sticky;
+
+  z-index: 5;
+  background-color: config.$secondary-bg;
+
+  .header-wrap {
+    max-width: 1800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    flex-shrink: 0;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+
+    .mobile-nav-toggle {
+      display: block;
+      background-color: transparent;
+      border: none;
+      color: white;
+      width: 2rem;
+      aspect-ratio: 1;
+      right: 1rem;
+      top: 1.4rem;
+      position: absolute;
+      z-index: 9999;
+
+
+
+      .top-bar,
+      .middle-bar,
+      .bottom-bar {
+        width: 1.875rem;
+        height: 3px;
+        margin-bottom: 0.45rem;
+        background-color: white;
+      }
+
+      .middle-bar {
+        transition: all 200ms linear;
+      }
+
+      &.open {
+        .top-bar {
+          animation-name: topbaropen;
+          animation-duration: 500ms;
+          animation-fill-mode: forwards;
+          transition: all 0.3s linear;
+        }
+      }
+      
+      &.open {
+        .bottom-bar {
+          animation-name: bottombaropen;
+          animation-duration: 500ms;
+          animation-fill-mode: forwards;
+          transition: all 0.3s linear;
+        }
+      }
+
+      &.open {
+        .middle-bar {
+          opacity: 0;
+        }
+      }
+      
+      &.close {
+        .top-bar {
+          animation-name: topbarclose;
+          animation-duration: 500ms;
+          animation-fill-mode: forwards;
+        }
+      }
+      
+      &.close {
+        .middle-bar {
+          opacity: 1;
+        }
+      }
+      
+      &.close {
+        .bottom-bar {
+          animation-name: bottombarclose;
+          animation-duration: 500ms;
+          animation-fill-mode: both;
+        }
+      }
+      
+      
+      @keyframes topbaropen {
+        from {
+          transform: translateY(0) rotate(0deg);
+        }
+      
+        50% {
+          transform: translateY(10px) rotate(0deg);
+        }
+      
+        100% {
+          transform: translateY(13px) rotate(45deg);
+        }
+      }
+      
+      @keyframes bottombaropen {
+        from {
+          transform: translateY(0) rotate(0deg);
+        }
+      
+        50% {
+          transform: translateY(-10px) rotate(0deg);
+        }
+      
+        100% {
+          transform: rotate(-45deg) translate(5px, -6.5px);
+        }
+      }
+      
+      @keyframes topbarclose {
+        from {
+          transform: translateY(13px) rotate(45deg);
+        }
+      
+        50% {
+          transform: translateY(10px) rotate(0deg);
+        }
+      
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+      }
+      
+      @keyframes bottombarclose {
+        from {
+          transform: rotate(-45deg) translate(5px, -6.5px);
+        }
+      
+        50% {
+          transform: translateY(-10px) rotate(0deg);
+        }
+      
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+      }
+    }
+
+    .logo-container {
+      flex: 1;
+      .logo {
+        font-weight: 700;
+        letter-spacing: 1px;
+        font-size: 1.6rem;
+        padding: 8px;
+
+        span {
+          color: config.$primary-purple;
+        }
+      }
+    }
+
+    .primary-navigation {
+      flex: 2;
+      height: 100%;
+      display: flex;
+      @include config.nav-transition;
+      overflow: hidden;
+
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.9);
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+
+      transform: translateX(100%);
+
+      &[data-visible="true"] {
+        transform: translateX(0%);
+      }
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        font-size: 2.5rem;
+
+        li {
+          margin-bottom: 25px;
+
+          a {
+            @include config.slow-transition;
+            &:hover {
+              color: config.$secondary-purple;
+            }
+
+            &.active-link {
+              color: config.$primary-purple;
+              position: relative;
+
+              &:after {
+                position: absolute;
+                content: "";
+                display: block;
+                bottom: -5px;
+                left: 0;
+                height: 2px;
+                width: 100%;
+                background: config.$primary-purple;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

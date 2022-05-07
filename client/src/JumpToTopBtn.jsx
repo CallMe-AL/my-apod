@@ -31,7 +31,7 @@ const JumpToTopBtn = () => {
   return (
     <>
       {showBtn && <a className='jump-to-top-btn' onClick={jumpToTop}>
-        <i aria-label="scroll to top of page" className="fas fa-chevron-up"></i>
+        <i role="link" aria-label="scroll to top of page" className="fas fa-chevron-up"></i>
       </a>}
     </>
     

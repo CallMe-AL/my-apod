@@ -13,7 +13,7 @@ const Apodrange = () => {
 
   const [startDate, setStartDate] = useState(date);
   const [endDate, setEndDate] = useState(date);
-  const [today, setToday] = useState(null);
+  const [today, setToday] = useState('');
   const [loading, setLoading] = useState('');
   const [warning, setWarning] = useState(null);
   const [apods, setApods] = useState(null);
@@ -123,7 +123,8 @@ const Apodrange = () => {
         <div className="date-div">
           <form>
             <div className="start-container">
-              <label htmlFor="start">Start date (earliest date: 06-16-1995): </label>
+              <label htmlFor="start">Start date 
+              (earliest date: 06-16-1995): </label>
               <input type="date" id="start" name="apod-start" min="1995-06-16" max={endDate ? endDate : today} value={startDate} onChange={handleStartDate}/>
             </div>
             

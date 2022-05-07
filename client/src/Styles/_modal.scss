@@ -1,0 +1,43 @@
+@use "_config.scss";
+
+.modal-overlay {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+
+  &.open {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .modal-img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+  }
+
+  .modal-img-container {
+    position: relative;
+    width: 80%;
+    max-width: 700px;
+    aspect-ratio: 1;
+    box-shadow: 0 0 5px white;
+  }
+
+  .close-modal-btn {
+    background-color: transparent;
+    color: config.$primary-purple;
+    border: none;
+    font-size: 2rem;
+    position: absolute;
+    top: -100px;
+    right: -0px;
+  }
+}

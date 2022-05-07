@@ -11,9 +11,9 @@ function App() {
   return (
     <>
       <Header />
-        <div className='main-wrap'>
+        <main className='main-wrap'>
           <Outlet />
-        </div>        
+        </main>        
       <Footer />
     </>
   );

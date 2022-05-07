@@ -21,15 +21,25 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/single-img', (req, res) => {
-  
-  console.log('connection received!');
-  request(url, (error, response, body) => {
+  // created in case we're receiving a specific date to modify below
+  let newurl = '';
+
+  if (req.query.date) {
+    console.log('query: ', req.query.date);
+    const date = req.query.date;
+    newurl += `&date=${date}`;
+  }
+  // console.log('connection received!');
+  request(url + newurl, (error, response, body) => {
     if (!error && response.statusCode === 200) {
       res.send(body);
     } else if (response.statusCode > 499 && response.statusCode < 600) {
       res.send({error: `Sorry, NASA\'s servers are current having internal issues. Please try again later. Status code: ${response.statusCode}.`});
+    } else if (response.statusCode === 404) {
+      res.send({error: `Sorry, NASA doesn\'t have an image for this day :(.`});
     } else {
       console.log(response.statusCode);
+      res.send({error: `Sorry, our server is currently having internal issues. Please try again later. Status code: ${response.statusCode}.`});
     }
   })
 });
@@ -46,8 +56,11 @@ app.get('/api/range-imgs', (req, res) => {
       res.send(body);
     } else if (response.statusCode > 499 && response.statusCode < 600) {
       res.send({error: `Sorry, NASA\'s servers are current having internal issues. Please try again later. Status code: ${response.statusCode}.`});
+    } else if (response.statusCode === 404) {
+      res.send({error: `Sorry, NASA doesn\'t have an image for this day :(.`});
     } else {
       console.log(response.statusCode);
+      res.send({error: `Sorry, our server is currently having internal issues. Please try again later. Status code: ${response.statusCode}.`});
     }
   });
 

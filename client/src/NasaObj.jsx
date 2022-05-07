@@ -1,11 +1,9 @@
 import { useState } from "react";
 import Modal from './Modal.jsx';
 
-const NasaObj = (props) => {
+const NasaObj = ({ apod }) => {
 
   const [open, setOpen] = useState(false);
-
-  const obj = props.apod;
 
   const openModal = () => {
     if (open) {
@@ -23,10 +21,10 @@ const NasaObj = (props) => {
 
   return (
     <>
-      {obj.media_type === 'image' 
-        ? <img className="apod-img" src={obj.url} alt={obj.title} onClick={() => openModal()}/>
-        : <iframe className="apod-video" src={obj.url} />}
-      <Modal apod={obj} open={open} setOpen={setOpen} />
+      {apod.media_type === 'image' 
+        ? <img className="apod-img" src={apod.url} alt={apod.title} onClick={() => openModal()}/>
+        : <iframe title="nasa's astronomy picture of the day video" className="apod-video" src={apod.url} />}
+      <Modal apod={apod} open={open} setOpen={setOpen} />
     </>
   )
 }

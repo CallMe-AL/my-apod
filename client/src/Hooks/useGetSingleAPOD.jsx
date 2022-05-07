@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { BASE_API_URL } from '../utils/constants';
 
-export default function useGetSingleAPOD(today) {
+export default function useGetSingleAPOD(date) {
   const [image, setImage] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {    
 
     const getPhoto = () => {
-      const response = fetch(`${BASE_API_URL}/api/single-img`, {
+      fetch(`${BASE_API_URL}/api/single-img?date=${date}`, {
         method: 'GET'
       })
       .then(response => response.json())
@@ -18,7 +18,7 @@ export default function useGetSingleAPOD(today) {
           setError(data);
         } else {
           setImage(data);
-          localStorage.setItem('currentDay', JSON.stringify(data));
+          localStorage.setItem('singleDay', JSON.stringify(data));
         }
       })
       .catch(error => {
@@ -26,12 +26,12 @@ export default function useGetSingleAPOD(today) {
       });
     };
 
-    if (localStorage.getItem('currentDay') === null) {
+    if (localStorage.getItem('singleDay') === null) {
       getPhoto();
     } else {
-      const data = localStorage.getItem('currentDay');
+      const data = localStorage.getItem('singleDay');
       const newData = JSON.parse(data);
-      if (newData.date !== today) {
+      if (newData.date !== date) {
         getPhoto();
       } else {
         setImage(newData);

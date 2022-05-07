@@ -1,0 +1,54 @@
+@use "_config.scss";
+
+footer {
+  background-color: config.$secondary-bg;
+
+  .footer-wrap {
+    max-width: 1800px;
+    padding: 10px;
+    margin: 0 auto;
+
+    .footer-social-links {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-bottom: 20px;
+
+      li {
+        padding: 5px;
+
+        .footer-link {
+          border-radius: 25px;
+          border: 2px solid white;
+          width: 35px;
+          height: 35px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          @include config.slow-transition;
+
+          .fab {
+            font-size: 1rem;
+          }
+
+          &:hover {
+            color: config.$secondary-purple;
+          }
+
+          &:active {
+            border-color: config.$secondary-purple;
+            color: config.$secondary-purple;
+          }
+        }
+      }
+    }
+
+    p {
+      margin-top: 10px;
+      text-align: center;
+      color: #a0a0a0;
+      position: relative;
+      font-size: 0.8rem;
+    }
+  }
+}

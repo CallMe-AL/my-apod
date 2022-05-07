@@ -1,0 +1,63 @@
+@use "_config.scss";
+
+.today-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex: 1;
+  overflow-y: hidden;
+  padding: 3rem 0.8rem;
+  max-width: 900px;
+  margin: 0 auto;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: config.$primary-purple;
+  }
+
+  .current-date {
+    margin-bottom: 0.8rem;
+  }
+
+  .apod-img {
+    margin-bottom: 2rem;
+  }
+
+  .info-container {
+    padding-bottom: 2.5rem;
+
+    & *:not(:first-child) {
+      margin-bottom: 1rem;
+    }
+
+    .apod-about {
+      margin: 25px 0 15px 0;
+      font-size: 1.625rem;
+    }
+
+    p {
+      line-height: 1.5;
+      font-size: 1.2rem;
+      color: config.$light-white;
+    }
+
+    .apod-copyright {
+
+      span {
+        font-weight: 700;
+      }
+    }
+
+    .apod-url {
+      color: config.$primary-purple;
+      @include config.slow-transition;
+
+      &:hover {
+        color: config.$active-link;
+      }
+    }
+  }
+}

@@ -1,13 +1,15 @@
-@import "config.scss";
-@import "header.scss";
-@import "about.scss";
-@import "homepage.scss";
-@import "today.scss";
-@import "apodrange.scss";
-@import "modal.scss";
-@import "nasaobj.scss";
-@import "footer.scss";
-@import "responsive.scss";
+@use "_config.scss";
+@use "_header.scss";
+@use "_about.scss";
+@use "_homepage.scss";
+@use "_today.scss";
+@use "_single.scss";
+@use "_apodrange.scss";
+@use "_modal.scss";
+@use "_nasaobj.scss";
+@use "_footer.scss";
+@use "_responsive.scss";
+
 @import url("https://fonts.googleapis.com/css2?family=Merriweather&family=Overpass:wght@200&display=swap");
 
 * {
@@ -22,7 +24,7 @@ html {
 
 html,
 body {
-  background: $background-color;
+  background: config.$background-color;
   color: white;
   height: 100%;
   font-family: "Overpass", sans-serif;
@@ -34,7 +36,7 @@ a {
   cursor: pointer;
 
   &:focus {
-    border-color: $primary-purple;
+    border-color: config.$primary-purple;
   }
 }
 
@@ -50,6 +52,12 @@ ul {
 
 button {
   cursor: pointer;
+  font-family: "Overpass",
+  sans-serif;
+}
+
+img {
+  display: block;
 }
 
 #root {
