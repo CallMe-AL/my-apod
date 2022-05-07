@@ -145,24 +145,25 @@ const Single = () => {
         <p>{apod && apod.date}</p>
       </div>
 
-      {apod ? <NasaObj apod={apod} /> : <div className='loader'>Loading...</div>}
-
-      <div className="single-nav">
-        {/* hides button if on the earliest date */}
-        {userDate !== '1995-06-16' && 
-          <button className="previous-day" aria-label='go back a day' onClick={decreaseDay}>
-            <FontAwesomeIcon icon={faChevronLeft} className="single-nav-icon-left" />
-            Previous
-          </button>        
-        }
-        {/* hides button if on today's date */}
-        {userDate !== todaysDate &&
-          <button className="next-day" aria-label='go forward a day' onClick={increaseDay}>
-            Next
-            <FontAwesomeIcon icon={faChevronRight} className="single-nav-icon-right" />
-          </button>        
-        }
-      </div>
+      {apod && <NasaObj apod={apod} />}
+      {apod && 
+        <div className="single-nav">
+          {/* hides button if on the earliest date */}
+          {userDate !== '1995-06-16' && 
+            <button className="previous-day" aria-label='go back a day' onClick={decreaseDay}>
+              <FontAwesomeIcon icon={faChevronLeft} className="single-nav-icon-left" />
+              Previous
+            </button>        
+          }
+          {/* hides button if on today's date */}
+          {userDate !== todaysDate &&
+            <button className="next-day" aria-label='go forward a day' onClick={increaseDay}>
+              Next
+              <FontAwesomeIcon icon={faChevronRight} className="single-nav-icon-right" />
+            </button>        
+          }
+        </div>      
+      }
 
       {apod && <Info apod={apod} />}
     </div>
