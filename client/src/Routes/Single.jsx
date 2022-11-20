@@ -5,7 +5,7 @@ import NasaObj from '../NasaObj';
 import Info from '../Info';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import {CopyToClipboard} from 'react-copy-to-clipboard';
+// import {CopyToClipboard} from 'react-copy-to-clipboard';
 import FavoriteButton from '../FavoriteButton';
 import { useAuthValue } from '../AuthContext';
 
@@ -22,8 +22,8 @@ const Single = () => {
   const [userDate, setUserDate] = useState(null);
   const [loading, setLoading] = useState('');
   const [isChanging, setIsChanging] = useState(false);
-  const [copyText, setCopyText] = useState('');
-  const [copied, setCoped] = useState(false);
+  // const [copyText, setCopyText] = useState('');
+  // const [copied, setCoped] = useState(false);
 
   // date picker stuff
   const [selected, setSelected] = useState(new Date());
@@ -63,7 +63,7 @@ const Single = () => {
       setTodaysDate(today);
       setUserDate(today);
       setSelected(new Date());
-      setMonth(new_date);
+      setMonth(new Date());
     }
 
   }, []);
