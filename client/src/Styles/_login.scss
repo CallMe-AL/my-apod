@@ -1,0 +1,61 @@
+@use "_config.scss";
+
+.login-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .__inner-wrap {
+    border: 1px solid config.$border-color;
+    border-radius: 25px;
+    padding: clamp(2rem, 6vw, 3.5rem) clamp(1rem, 6vw, 2rem);
+
+    h1 {
+      text-align: center;
+      color: config.$primary-purple;
+      margin-bottom: 2rem;
+    }
+
+    .auth__error {
+      color: rgb(214, 70, 70);
+    }
+
+    .login-form {
+      margin-bottom: 2rem;
+
+      & > label {
+        color: config.$primary-purple;
+        text-transform: uppercase;
+        margin-bottom: 0.2rem;
+        display: block;
+        font-size: 1.1rem;
+      }
+
+      & > input {
+        display: block;
+        margin-bottom: clamp(1rem, 5vw, 2rem);
+        width: 100%;
+        font-size: inherit;
+        padding: 0.5rem;
+      }
+
+      .submit {
+        @include config.account-button-styles;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+
+    p {
+      a {
+        color: config.$secondary-purple;
+        transition: color 300ms ease-in-out;
+
+        &:hover {
+          color: config.$active-link;
+        }
+      }
+    }
+  }
+}

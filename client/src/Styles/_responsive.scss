@@ -1,0 +1,474 @@
+@use "_config.scss";
+
+@include config.for-desktop {
+
+  // today div 
+  // --nothing yet!
+
+  // range div
+  .range-div {
+
+    .selection-div {
+      padding-left: clamp(2rem, 6vw, 5rem);
+      grid-template-areas:
+          "header calend"
+          "button calend";
+
+      .selection-header {
+        margin-right: auto;
+        margin-bottom: 0rem;
+        margin-top: auto;
+        text-align: left;
+      }
+
+      .date-div {
+        margin-bottom: 0;
+      }
+
+      .update-btn {
+        margin-top: auto;
+        margin-right: auto;
+      }
+    }
+
+    .jump-to-top-btn {
+      height: 50px;
+      width: 50px;
+      bottom: 75px;
+      right: 100px;
+    }
+  }
+
+  // single div
+  .single-div {
+    padding: 3rem 1.5rem;
+
+    .upper-wrap {
+      padding-left: clamp(1.5rem, 5vw, 3rem);
+      grid-template-areas:
+          "header calend"
+          "button calend";
+
+      .single-header {
+        margin-right: auto;
+        margin-bottom: 0rem;
+        margin-top: auto;
+        line-height: 1.5;
+        text-align: left;
+    
+        h1 {
+          margin-bottom: 0rem;
+        }
+      }
+
+      .update-btn {
+        margin-top: auto;
+        margin-right: auto;
+      }
+    }
+  
+  
+    .single-container {
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .__inner-wrap {
+        width: 400px;
+      }
+    }
+  
+  
+  
+    .single-nav {
+      max-width: 400px;
+      margin: 2rem auto 3rem auto;
+  
+  
+      .change-day-btn {
+        padding: 0;
+        background-color: transparent;
+        border: none;
+        color: white;
+        border-radius: 1rem;
+  
+        .single-nav-icon-left {
+          margin-right: 0.5rem;
+          transition: all 500ms ease-out;
+        }
+  
+        .single-nav-icon-right {
+          margin-left: 0.5rem;
+          transition: all 500ms ease-out;
+        }
+      }
+    }
+  }
+
+  // footer
+  footer {
+  
+    .footer-wrap {
+  
+      p {
+        text-align: left;
+      }
+    }
+  }
+}
+
+@include config.for-larger-desktop {
+  // main header
+    .main-header {
+      .header-wrap {
+        height: config.$nav-height;
+  
+        .mobile-nav-toggle {
+          display: none;
+        }
+  
+        .primary-navigation {
+          align-items: center;
+          position: relative;
+          justify-content: flex-end;
+          flex-direction: row;
+          transform: translateX(0%);
+          background-color: transparent;
+          backdrop-filter: blur(0px);
+          overflow: visible;
+  
+          .main-links {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-right: auto;
+          }
+  
+          .account-links {
+            padding-top: 0px;
+          }
+
+          ul {
+            flex-direction: row;
+            font-size: 1.3rem;
+  
+            li {
+              margin-right: 15px;
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+
+  // today
+  .today-wrap {
+    h1 {
+      font-size: 3rem;
+    }
+
+    .subhead-wrap {
+
+      .current-date {
+        font-size: 1.2rem;
+      }
+    }
+
+
+    .desktop-info-container {
+      .apod-url {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  // modal
+  .modal-overlay {
+
+    .close-modal-btn {
+      font-size: 2.5rem;
+      &:hover {
+        @include config.slow-transition;
+        color: config.$secondary-purple;
+      }
+
+      &:active {
+        color: white;
+      }
+    }
+  }
+
+  // homepage
+  .homepage-wrap {
+    .home-title {
+      font-size: config.$h1-font;
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+
+    .homepage-link {
+      font-size: 1.2rem;
+    }
+  }
+
+  // single imgs
+  .single-div {
+    padding: 3rem 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+
+    .upper-wrap {
+
+      .single-header {    
+        h1 {
+          font-size: 2.5rem;
+        }
+  
+        p {
+          font-size: 1.2rem;
+        }
+
+      }
+      .update-btn {
+        font-size: 1.2rem;
+      }
+    }
+  
+
+    .single-container {
+      h2 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+      }
+
+      .__inner-wrap {
+        width: 600px;
+      }
+    } 
+  
+  
+    .single-nav {
+      max-width: 600px;
+      margin-bottom: 3.5rem;
+  
+  
+      .change-day-btn {
+        font-size: 1rem;
+  
+        .single-nav-icon-left {
+          margin-right: 0.5rem;
+          transition: all 500ms ease-out;
+        }
+  
+        .single-nav-icon-right {
+          margin-left: 0.5rem;
+          transition: all 500ms ease-out;
+        }
+
+        &:hover {
+          .single-nav-icon-left {
+            transform: translateX(-0.5rem);
+          }
+        
+          .single-nav-icon-right {
+            transform: translateX(0.5rem);
+          }
+        }
+      }
+    }
+  }
+
+  // apod range
+  .range-div {
+    .ui-text {
+      padding-left: 0px;
+    }
+
+  }
+
+  // range images -- range/favorites
+  .main-range-content-div {
+    .info-div {
+      display: block;
+    }
+
+    .images-cont {
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      grid-gap: 2rem;
+      flex: 1;
+
+      // images
+      .multi-img-container {
+        width: 380px;
+        position: relative;
+
+        &:hover {
+          .img-container {
+            position: relative;
+
+            &::after {
+              top: 0;
+              left: 0;
+              height: 100%;
+              width: 100%;
+              content: "";
+              background: linear-gradient(rgba(0, 0, 0, 0.8));
+            }
+          }
+
+          .apod-bottom-container {
+            opacity: 1;
+          }
+        }
+
+        .img-container {
+
+          // height: 350px;
+          .apod-info {
+            display: none;
+          }
+        }
+
+        .apod-bottom-container {
+          @include config.slow-transition;
+          position: absolute;
+          bottom: 10px;
+          padding: 5px;
+          width: 100%;
+          opacity: 0;
+          z-index: 1;
+          background-color: rgba(0, 0, 0, 0.8);
+        }
+      }
+
+      // video
+      .multi-apod-video {
+        width: 380px;
+        position: relative;
+
+        &:hover {
+          .apod-bottom-container {
+            opacity: 1;
+          }
+        }
+
+        .video-container {
+          width: 100%;
+          margin-bottom: 10px;
+          position: relative;
+          overflow-y: hidden;
+
+          .apod-info {
+            display: none;
+          }
+        }
+
+        .apod-video {
+          width: 100%;
+          height: 100%;
+        }
+
+        .apod-bottom-container {
+          @include config.slow-transition;
+          position: absolute;
+          bottom: 10px;
+          padding: 5px;
+          width: 100%;
+          z-index: 1;
+          background-color: rgba(0, 0, 0, 0.8);
+          opacity: 0;
+        }
+      }
+    }
+  }
+  
+
+  .about-div {
+    h1 {
+      text-align: left;
+      font-size: config.$h1-font;
+    }
+    h2 {
+      font-size: config.$h2-font;
+    }
+
+    p {
+      font-size: config.$p-font;
+    }
+
+    p:last-of-type {
+      &::after {
+        width: 400px;
+        margin-left: -200px;
+        bottom: -18px;
+      }
+    }
+
+    a {
+      font-size: 1.1rem;
+    }
+  }
+
+  footer {
+    .footer-wrap {
+      .footer-social-links {
+        li {
+          .footer-link {
+            width: 2.8125rem;
+            height: 2.8125rem;
+            .brand-icon {
+              font-size: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include config.for-much-larger-desktop {
+
+  .range-div {
+    .info-div {
+      margin-left: 20px;
+    }
+
+    .selection-div {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      p:not(.footer-styles) {
+        font-size: 1.2rem;
+      }
+
+      .footer-styles {
+        font-size: 1.1rem;        
+      }
+
+      .update-btn {
+        font-size: 1.2rem;
+      }
+    }
+
+  }
+
+  .main-range-content-div {
+    .images-cont {
+      .multi-img-container {
+        width: 400px;
+      }
+
+      .multi-apod-video {
+        width: 400px;
+      }
+    }
+  }
+  
+}

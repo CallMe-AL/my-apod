@@ -1,0 +1,119 @@
+@use "_config.scss";
+@use "_gridApods.scss";
+
+.profile-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 4rem);
+  width: 100%;
+
+  .__inner-wrap {
+    border-bottom: 1px solid config.$border-color;
+    padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 6vw, 2rem);
+    min-width: 300px;
+    text-align: center;
+    margin-bottom: clamp(2rem, 6vw, 4rem);
+
+    h1 {
+      color: config.$primary-purple;
+      margin-bottom: 2rem;
+      letter-spacing: 1px;
+    }
+
+    .username {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .email {
+      width: fit-content;
+      margin: 0 auto 2rem auto;
+
+      &.verified {
+        position: relative;
+
+        .verified-icon {
+          position: absolute;
+          font-size: 0.8rem;
+          top: -0.3rem;
+          right: -0.95rem;
+          color: config.$primary-purple;
+        }
+        
+      }
+    }
+
+    .sign-out {
+      @include config.account-button-styles;
+      display: block;
+      margin: 0 auto 1rem auto;
+    }
+
+    .delete-act {
+      @include config.delete-btn-styles;
+    }
+  }
+
+  .favorites-wrap {
+    width: 100%;
+    .__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 800px;
+      padding-inline: 1rem;
+      margin: 0 auto clamp(3rem, 8vw, 6rem) auto;
+
+      h2 {
+        color: config.$primary-purple;
+        letter-spacing: 1px;
+      }
+
+      .sort-form {
+        border-radius: 0.3rem;
+        box-shadow: 0 0 0.4em config.$primary-purple, inset 0 0 1px config.$primary-purple;
+        background-color: transparent;
+        position: relative;
+
+        select {
+          width: 10rem;
+          padding: 0.4rem 1.5rem;
+          outline: none;
+          cursor: pointer;
+          border: none;
+          border-radius: 0;
+          background-color: transparent;
+          color: config.$secondary-purple;
+          font-size: 1rem;
+          // removes native down arrow
+          text-indent: 0.01px;
+          text-overflow: '';
+          appearance: none;
+        }
+
+
+        &:after {
+          position: absolute;
+          top: 50%;
+          right: 0.4rem;
+          /* Styling the new down arrow */
+          width: 0;
+          height: 0;
+          padding: 0;
+          content: '';
+          border-left: .25em solid transparent;
+          border-right: .25em solid transparent;
+          border-top: .375em solid config.$secondary-purple;
+          pointer-events: none;
+        }
+
+      }
+    }
+
+    // favorite styles included in gridApods
+  }
+}

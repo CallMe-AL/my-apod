@@ -1,0 +1,158 @@
+@use "_config.scss";
+
+.single-div {
+  padding: 3rem 1rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+
+  .upper-wrap {
+    display: grid;
+    grid-template-areas: 
+        "header"
+        "calend"        
+        "button";
+    padding-bottom: 3rem;
+    justify-items: center;
+    border-bottom: 1px solid white;
+
+    .single-header {
+      grid-area: header;
+      margin-bottom: 2.5rem;
+      text-align: center;
+  
+      h1 {
+        color: config.$primary-purple;
+        margin-bottom: 0.5rem;
+      }
+    }
+  
+    .single-form-wrap {
+      grid-area: calend;
+      
+  
+      .start-container {
+        margin-bottom: 3rem;
+      }
+    }
+
+    .update-btn {
+      grid-area: button;
+      margin-top: 2rem;
+      @include config.button-styles;
+    }
+  }
+
+
+  .ui-text {
+    margin-block: 1.5rem;
+    min-height: 1.5rem;
+    max-width: 100%;
+
+    .error-text {
+      padding: 5px;
+      color: black;
+      border: 1px solid red;
+      background-color: rgb(202, 121, 121);
+    }
+  }
+
+  .single-container {
+    text-align: center;
+
+    h2 {
+      color: config.$primary-purple;
+      margin-bottom: 1rem;
+    }
+
+    .__inner-wrap {
+      margin: 0 auto;
+      width: 300px;
+      .inner-single-header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 auto 1rem auto;
+        
+      }
+    }
+  }
+
+  .single-nav {
+    max-width: 300px;
+    margin: 2rem auto 2rem auto;
+    display: flex;
+    justify-content: space-between;
+    
+
+    .change-day-btn {
+      padding: 0;
+      background-color: transparent;
+      border: none;
+      color: white;
+      border-radius: 1rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: center;
+
+      .single-nav-icon-left {
+        padding-right: 0.5rem;
+        transition: all 500ms ease-out;
+      }
+
+      .single-nav-icon-right {
+        padding-left: 0.5rem;
+        transition: all 500ms ease-out;
+      }
+
+      &:hover {
+        .single-nav-icon-left {
+          transform: translateX(-0.3rem);
+          transition: transform 500ms ease-out;
+        }
+        
+        .single-nav-icon-right {
+          transform: translateX(0.3rem);
+          transition: transform 500ms ease-out;
+        }
+      }
+    }
+  }
+
+  .info-container {
+    padding-bottom: 2.5rem;
+  
+    & *:not(:first-child) {
+      margin-bottom: 1rem;
+    }
+  
+    .apod-about {
+      margin: 25px 0 15px 0;
+      font-size: 1.625rem;
+    }
+  
+    p {
+      line-height: 1.5;
+      font-size: 1.2rem;
+      color: config.$light-white;
+    }
+  
+    .apod-copyright {
+  
+      span {
+        font-weight: 700;
+      }
+    }
+  
+    .apod-url {
+      color: config.$primary-purple;
+      @include config.slow-transition;
+  
+      &:hover {
+        color: config.$active-link;
+      }
+    }
+  }
+}

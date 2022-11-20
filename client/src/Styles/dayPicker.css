@@ -1,0 +1,33 @@
+.rdp {
+  margin-bottom: 0rem;
+}
+
+.rdp-caption_dropdowns {
+  color: #c498ff;
+}
+
+.rdp-day_selected,
+.rdp-day_selected:focus-visible,
+.rdp-day_selected:hover {
+  color: white;
+  opacity: 1;
+  background-color: #9a54b3;
+}
+
+.rdp-button:hover:not([disabled]):not(.rdp-day_selected) {
+  background-color: #9a54b3;
+}
+
+@media (min-width: 1250px) {
+  .rdp-caption_dropdowns {
+    font-size: 1.2rem;
+  }
+
+  .rdp-head_cell {
+    font-size: 0.9rem;
+  }
+
+  .rdp-button {
+    font-size: 1.1rem;
+  }
+}

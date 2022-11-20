@@ -1,0 +1,102 @@
+@use "_about.scss";
+@use "_apodrange.scss";
+@use "_config.scss";
+@use "_deleteProfileModal.scss";
+@use "_favoriteBtn.scss";
+@use "_footer.scss";
+@use "_gridApods.scss";
+@use "_header.scss";
+@use "_homepage.scss";
+@use "_jumpToTopBtn.scss";
+@use "_login.scss";
+@use "_logout.scss";
+@use "_modal.scss";
+@use "_nasaobj.scss";
+@use "_profile.scss";
+@use "_register.scss";
+@use "_single.scss";
+@use "_today.scss";
+@use "_verify.scss";
+
+// keep this at the bottom!!
+@use "_responsive.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Merriweather&family=Overpass:wght@200&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow: auto;
+  // font-size: min(max(1rem, 4vw), 22px);
+}
+
+html,
+body {
+  background: config.$background-color;
+  color: white;
+  height: 100%;
+  font-family: "Overpass", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+
+  &:focus {
+    border-color: config.$primary-purple;
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Merriweather", serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: "Overpass",
+  sans-serif;
+}
+
+img {
+  display: block;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+
+  .main-section {
+    flex: 1 0 auto;
+    display: flex;
+  }
+}
+
+.main-wrap {
+  flex: 1 0;
+  margin: 0 auto;
+  display: flex;
+  width: 100%;
+}

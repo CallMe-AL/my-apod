@@ -1,0 +1,134 @@
+// colors
+$primary-color: #3d72a4;
+$primary-active: #6092c2;
+$delete-color: rgb(255, 75, 75);
+// $background-color: #18191a;
+// $background-color: rgb(79, 82, 180);
+$background-color: rgb(0, 2, 18);
+// $secondary-bg: #252526;
+$secondary-bg: transparent;
+$border-color: rgb(190, 190, 190);
+$light-white: rgb(218, 218, 218);
+$menu-width: 300px;
+$h1-font: 3rem;
+$h2-font: 1.9rem;
+$p-font: 1.2rem;
+
+// old values just in case :)
+// $primary-purple: #9a54b3;
+// $secondary-purple: #512888;
+// $active-link: #9b57f5;
+$primary-purple: #c498ff;
+$secondary-purple: #9a54b3;
+$active-link: blueviolet;
+
+// height
+$nav-height: 100px;
+
+@mixin slow-transition {
+  transition: all 0.3s linear;
+}
+
+@mixin nav-transition {
+  transition: all 500ms ease-in-out;
+}
+
+@mixin page-links {
+  background-color: $secondary-purple;
+  padding: 0.5rem;
+  border-radius: 1.5625rem;
+  letter-spacing: 1px;
+  @include slow-transition();
+
+  &:hover {
+    background-color: $primary-purple;
+  }
+
+  &:active {
+    background-color: white;
+    color: $active-link;
+  }
+}
+
+@mixin button-styles {
+  background-color: transparent;
+  padding: 0.5rem clamp(2rem, 5vw, 4rem);
+  border-radius: 25px;
+  border: 2px solid $secondary-purple;
+  letter-spacing: 1px;
+  color: white;
+  font-size: 1rem;
+  @include slow-transition();
+  box-shadow: 0 0 8px $secondary-purple;
+
+  &:hover {
+    background-color: $secondary-purple;
+    box-shadow: 0 0 20px $secondary-purple;
+  }
+
+  &:active {
+    background-color: white;
+    color: $secondary-purple;
+  }
+}
+
+@mixin account-button-styles {
+  background-color: $secondary-purple;
+  padding: 0.5rem clamp(2rem, 5vw, 4rem);
+  border-radius: 25px;
+  border: 2px solid $secondary-purple;
+  letter-spacing: 1px;
+  color: white;
+  font-size: 1rem;
+  @include slow-transition();
+  box-shadow: 0 0 8px $secondary-purple;
+
+  &:hover {
+    background-color: $primary-purple;
+    box-shadow: 0 0 20px $primary-purple;
+    border-color: $primary-purple;
+  }
+
+  &:active {
+    background-color: white;
+    color: $secondary-purple;
+  }
+}
+
+@mixin delete-btn-styles {
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 25px;
+  padding: 0.8rem clamp(2rem, 6vw, 3rem);
+  font-size: 1.1rem;
+  color: $delete-color;
+  letter-spacing: 1px;
+  transition: border-color 300ms ease-in-out, background-color 300ms ease-in-out, color 300ms ease-in-out;
+
+  &:hover {
+    border-color: $delete-color;
+  }
+
+  &:active {
+    background-color: $delete-color;
+    color: $light-white;
+  }
+}
+
+@mixin for-desktop {
+  @media screen and (min-width: 45rem) {
+    @content;
+  }
+}
+
+@mixin for-larger-desktop {
+  @media screen and (min-width: 950px) {
+    @content;
+  }
+}
+
+@mixin for-much-larger-desktop {
+  @media screen and (min-width: 1250px) {
+    @content;
+  }
+}

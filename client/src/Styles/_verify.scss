@@ -1,0 +1,38 @@
+@use "_config.scss";
+
+.verify-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .__inner-wrap {
+    // padding-top: clamp(2rem, 6vw, 4rem);
+    border: 1px solid config.$border-color;
+    border-radius: 25px;
+    padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 6vw, 2rem);
+
+    h1 {
+      color: config.$primary-purple;
+      margin-bottom: 2rem;
+    }
+
+    .current-user {
+      color: config.$primary-purple;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .current-user ~ p {
+      margin-bottom: 2rem;
+    }
+
+    .resend-email {
+      @include config.account-button-styles;
+      display: block;
+      margin: 0 auto;
+      letter-spacing: 1.5px;
+    }
+  }
+}

@@ -1,0 +1,247 @@
+@use "_config.scss";
+
+.main-range-content-div {
+  display: flex;
+  max-width: 1800px;
+  width: 100%;
+  justify-content: center;
+  margin: 0 auto;
+
+  // images container
+  .images-cont {
+    display: grid;
+    place-items: center;
+    padding: 1.25rem 0 2.5rem 0;
+    gap: 3.5rem;
+
+    // image stylings
+    .multi-img-container {
+      width: 320px;
+      margin-bottom: 1.5625rem;
+
+      .multi-title-section {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.625rem;       
+
+        button {
+          margin-left: auto;
+        }
+
+      }      
+
+      .img-container {
+        width: 100%;
+        aspect-ratio: 1;
+        margin-bottom: 10px;
+        position: relative;
+        overflow-y: hidden;
+        cursor: pointer;
+        background-color: config.$secondary-bg;
+
+        .apod-img {
+          width: 100%;
+          height: 100%;
+          object-fit: fill;
+        }
+
+        .apod-info {
+          display: block;
+          position: absolute;
+          z-index: 5;
+          height: 100%;
+          width: 100%;
+          bottom: -100%;
+          left: 0;
+          padding: 0.8rem 0.8rem 2rem 0.8rem;
+          background: rgba(0, 0, 0, 0.8);
+          overflow-y: auto;
+          @include config.slow-transition;
+
+          &.visible {
+            bottom: 0;
+          }
+
+          h2 {
+            margin-bottom: 15px;
+          }
+
+          .apod-explanation {
+            margin-bottom: 10px;
+            line-height: 1.5;
+          }
+
+          .apod-copyright {
+            margin-bottom: 10px;
+
+            span {
+              font-weight: 700;
+            }
+          }
+
+          .apod-url {
+            color: config.$primary-purple;
+          }
+
+          .info-close-btn {
+            @include config.button-styles;
+            display: none;
+            margin: 10px auto 0 auto;
+          }
+        }
+      }
+
+      .apod-bottom-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .apod-title {
+          text-align: left;
+        }
+
+        .info-btn {
+          @include config.button-styles;
+          padding: 5px;
+          margin-left: 5px;
+        }
+      }
+    }
+
+    // video stylings
+    .multi-apod-video {
+      width: 320px;
+      margin-bottom: 25px;
+
+      .multi-title-section {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.625rem;
+      
+        button {
+          margin-left: auto;
+        }
+      
+      }
+
+      .video-container {
+        width: 100%;
+        aspect-ratio: 1;
+        margin-bottom: 10px;
+        position: relative;
+        overflow-y: hidden;
+
+        .apod-video {
+          width: 100%;
+          height: 100%;
+        }
+
+        .apod-info {
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          bottom: -100%;
+          left: 0;
+          padding: 10px;
+          background: rgba(0, 0, 0, 0.8);
+          overflow-y: auto;
+          @include config.slow-transition;
+
+          &.visible {
+            bottom: 0;
+          }
+
+          h2 {
+            margin-bottom: 15px;
+          }
+
+          .apod-explanation {
+            margin-bottom: 10px;
+            line-height: 1.5;
+          }
+
+          .apod-copyright {
+            margin-bottom: 10px;
+
+            span {
+              font-weight: 700;
+            }
+          }
+
+          .apod-url {
+            color: config.$active-link;
+          }
+        }
+      }
+
+      .apod-bottom-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .apod-title {
+          text-transform: uppercase;
+          text-align: center;
+        }
+
+        .info-btn {
+          @include config.button-styles;
+          padding: 5px;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+
+  // info div
+  .info-div {
+    display: none;
+    border-left: 1px solid white;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 400px;
+
+    .info-div-cont {
+      position: sticky;
+      top: 10px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding-bottom: 5rem;
+
+      .__title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+      }
+
+      .__explanation {
+        line-height: 1.5;
+        color: config.$light-white;
+      }
+
+      .__copyright {
+        span {
+          font-weight: 700;
+        }
+      }
+
+      .__url {
+        color: config.$primary-purple;
+        font-size: 1.2rem;
+        @include config.slow-transition;
+
+        &:hover {
+          color: config.$active-link;
+        }
+
+        &:active {
+          color: white;
+        }
+      }
+    }
+  }
+}

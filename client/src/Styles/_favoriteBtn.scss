@@ -1,0 +1,48 @@
+.favorite-btn {
+  background-color: transparent;
+  border-color: transparent;
+  width: 1.8rem;
+
+  &.favorited {
+    .heart {
+      fill: red;
+    }
+  }
+
+  &.heartbeat {
+    .heart {
+      animation: heartbeat 600ms 1;
+    }
+  }
+
+  .heart {
+    stroke: red;
+    stroke-width: 1.5px;
+    fill: transparent;
+    width: 100%;
+    overflow: visible; // flex will clip the edges otherwise
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+}
+
+@keyframes heartbeat {
+  0% {
+    scale: 1;
+  }
+
+  33% {
+    scale: 0.5;
+  }
+
+  66% {
+    scale: 1.5;
+  }
+
+  100% {
+    scale: 1;
+  }
+}

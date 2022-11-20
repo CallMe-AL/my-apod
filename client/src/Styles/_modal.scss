@@ -1,0 +1,51 @@
+@use "_config.scss";
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal-img-container {
+    position: relative;
+    margin: 0 auto;
+    width: 85%;
+    max-width: 800px;
+    aspect-ratio: 1;
+    box-shadow: 0 0 5px white;
+    border-radius: 25px;
+    
+
+    .modal-img {
+      display: block;
+      margin: 0 auto;
+      height: 100%;
+      width: 100%;
+      border-radius: 25px;
+    }
+  }
+
+  .close-modal-btn {
+    background-color: transparent;
+    color: config.$primary-purple;
+    border: none;
+    font-size: 2rem;
+    position: absolute;
+    bottom: clamp(-15rem, -6.5vw, -3.5rem);
+    right: 50%;
+    transform: translateX(50%);
+  }
+}

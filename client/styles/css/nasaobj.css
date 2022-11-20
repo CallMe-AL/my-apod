@@ -1,0 +1,11 @@
+.apod-img {
+  width: 300px;
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+
+.apod-video {
+  width: 300px;
+  aspect-ratio: 1;
+  border: none;
+}/*# sourceMappingURL=nasaobj.css.map */

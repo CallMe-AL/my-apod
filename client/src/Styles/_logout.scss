@@ -1,0 +1,36 @@
+@use "_config.scss";
+
+.logout-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .__inner-wrap {
+    text-align: center;
+    h1 {
+      color: config.$primary-purple;
+      margin-bottom: 0.7rem;
+    }
+
+    h2 {
+      margin-bottom: clamp(1.5rem, 6vw, 3rem);
+      font-weight: 500;
+      span {
+        color: config.$primary-purple;
+      }
+    }
+
+    a {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+      color: config.$light-white;
+      transition: color 300ms ease-in-out;
+
+      &:hover {
+        color: config.$active-link;
+      }
+    }
+  }
+}

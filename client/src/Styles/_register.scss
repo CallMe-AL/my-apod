@@ -1,0 +1,75 @@
+@use "_config.scss";
+
+.register-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;  
+  align-items: center;
+  
+  .__inner-wrap {
+    // padding-top: clamp(2rem, 6vw, 4rem);
+    .main-headers {
+      text-align: center;
+      
+
+      h1 {
+        margin-bottom: 1rem;
+        color: config.$primary-purple;
+      }
+
+      p {
+        margin-bottom: clamp(1.5rem, 6vw, 3rem);
+      }
+    }
+
+    .auth-error {
+      color: rgb(253, 89, 89);
+      text-align: center;
+      padding-bottom: 0.5rem;
+    }
+
+    .sign-up-form {
+      border: 1px solid;
+      border-color: config.$border-color;
+      padding: 2rem 1.5rem;
+      border-radius: 25px;
+
+      & > label {
+        color: config.$primary-purple;
+        text-transform: uppercase;
+        margin-bottom: 0.2rem;
+        display: block;
+        font-size: 1.1rem;
+      }
+
+      & > input {
+        display: block;
+        margin-bottom: clamp(1rem, 5vw, 2rem);
+        width: 100%;
+        font-size: inherit;
+        padding: 0.5rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+        margin-bottom: clamp(1rem, 5vw, 2rem);
+
+        a {
+          color: config.$primary-purple;
+          transition: color 500ms ease-in-out;
+          
+          &:hover {
+            color: config.$secondary-purple;
+          }
+        }
+      }
+
+      .sign-up-btn {
+        font-size: inherit;
+        display: block;
+        margin: 0 auto;
+        @include config.account-button-styles;
+      }
+    }
+  }
+}

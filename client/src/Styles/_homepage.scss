@@ -1,0 +1,41 @@
+@use "_config.scss";
+
+.homepage-wrap {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  min-height: 80vh;
+
+  .home-title {
+    margin-bottom: 25px;
+    text-align: center;
+  }
+
+  .main-apod-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem 1.875rem 1rem;
+    width: 100%;
+    max-width: 75ch;
+    margin: 0 auto;
+    text-align: center;
+
+    p {
+      margin-bottom: 1rem;
+      line-height: 1.5;
+      color: rgb(199, 199, 199);
+    }
+
+    p:nth-child(2) {
+      margin-bottom: 3rem;
+    }
+
+    .homepage-link {
+      @include config.page-links;
+      padding: 0.8rem clamp(2rem, 5vw, 5rem);
+    }
+  }
+}
