@@ -16,6 +16,9 @@
     text-align: center;
     margin-bottom: clamp(1rem, 6vw, 3rem);
     color: config.$primary-purple;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
   }
 
   .subhead-wrap { 
@@ -54,6 +57,11 @@
     .apod-about {
       margin: 25px 0 15px 0;
       font-size: 1.625rem;
+      color: config.$secondary-purple;
+      // color: white;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 400;
     }
 
     p {

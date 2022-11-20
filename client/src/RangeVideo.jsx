@@ -56,7 +56,7 @@ const RangeVideo = ({ apod, index, setActiveItem, activeItem, setActiveApod }) =
         </div>
       <div className="video-container" ref={vidRef}>
         <iframe 
-          src={load && apod.url} 
+          src={load ? apod.url : undefined} 
           frameBorder="0" 
           className="apod-video" 
           aria-label={`Video: ${apod.title}`}

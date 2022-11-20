@@ -19,6 +19,12 @@ const Favorites = () => {
   // see here: https://support.mozilla.org/en-US/kb/xframe-neterror-page?as=u&utm_source=inproduct
   useEffect(() => {
     if (!isLoggedIn) return;
+
+    let stored_sort = sessionStorage.getItem('apod-sort');
+    if (stored_sort) {
+      setSortValue(stored_sort);
+      
+    }
     const q = query(collection(db, 'fav_apods'), where("userId", "==", currentUser.uid));
     const temp_favs = [];
 
@@ -29,44 +35,52 @@ const Favorites = () => {
           temp_favs.push({ docId: doc.id, data: doc.data() });
         })
       })
-      .then(() => setFavoriteApods(temp_favs));
+      .then(() => {
+        changeSorting(stored_sort, temp_favs);
+        setFavoriteApods(temp_favs)
+      })
 
-  }, []);
+  }, [isLoggedIn]);
 
-  const changeSorting = (e) => {
+  const changeSorting = (choice, array) => {
     // *** SORT MUTATES ORIGINAL ARRAY, do i want that???***
 
     // if (e.target.value === sortValue) return;
 
-    if (e.target.value === 'a-z') {
-      favoriteApods.sort((a, b) => (a.data.title > b.data.title) ? 1 : -1);
+    if (choice === 'a-z') {
+      array.sort((a, b) => (a.data.title > b.data.title) ? 1 : -1);
       setSortValue('a-z');
-
+      sessionStorage.setItem('apod-sort', choice);
     }
 
-    if (e.target.value === 'z-a') {    
-      favoriteApods.sort((a, b) => (a.data.title < b.data.title) ? 1 : -1);
+    if (choice === 'z-a') {    
+      array.sort((a, b) => (a.data.title < b.data.title) ? 1 : -1);
       setSortValue('z-a');
+      sessionStorage.setItem('apod-sort', choice);
     }
 
-    if (e.target.value === 'recent') {
-      favoriteApods.sort((a, b) => (a.data.date < b.data.date) ? 1 : -1);
+    if (choice === 'recent') {
+      array.sort((a, b) => (a.data.date < b.data.date) ? 1 : -1);
       setSortValue('recent');
+      sessionStorage.setItem('apod-sort', choice);
     }
 
-    if (e.target.value === 'oldest') {
-      favoriteApods.sort((a, b) => (a.data.date > b.data.date) ? 1 : -1);
+    if (choice === 'oldest') {
+      array.sort((a, b) => (a.data.date > b.data.date) ? 1 : -1);
       setSortValue('oldest');
+      sessionStorage.setItem('apod-sort', choice);
     }
 
-    if (e.target.value === 'image') {
-      favoriteApods.sort((a, b) => (a.data.mediaType > b.data.mediaType) ? 1 : -1);
+    if (choice === 'image') {
+      array.sort((a, b) => (a.data.mediaType > b.data.mediaType) ? 1 : -1);
       setSortValue('image');
+      sessionStorage.setItem('apod-sort', choice);
     }
 
-    if (e.target.value === 'video') {
-      favoriteApods.sort((a, b) => (a.data.mediaType < b.data.mediaType) ? 1 : -1);
+    if (choice === 'video') {
+      array.sort((a, b) => (a.data.mediaType < b.data.mediaType) ? 1 : -1);
       setSortValue('video');
+      sessionStorage.setItem('apod-sort', choice);
     }
   }
 
@@ -76,7 +90,7 @@ const Favorites = () => {
           <h2>Favorites</h2>
           <form className='sort-form'>
             <label htmlFor="sort" className='sr-only'>Sort favorites</label>
-            <select name="sort" value={sortValue} onChange={changeSorting} placeholder='Sort by...'>
+            <select name="sort" value={sortValue} onChange={(e) => changeSorting(e.target.value, favoriteApods)} placeholder='Sort by...'>
               <option value='Sort by...' disabled>Sort by...</option>
               <option value="a-z">Name a-z</option>
               <option value="z-a">Name z-a</option>
