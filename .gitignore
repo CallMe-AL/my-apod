@@ -27,4 +27,4 @@ yarn-debug.log*
 yarn-error.log*
 
 #firebase
-client/src/fb-stuff
+# client/src/fb-stuff
