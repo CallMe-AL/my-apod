@@ -4,7 +4,6 @@ import { BASE_API_URL } from '../utils/constants';
 import NasaObj from '../NasaObj';
 import Info from '../Info';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import FavoriteButton from '../FavoriteButton';
@@ -128,6 +127,7 @@ const Single = () => {
     })
     .then(response => response.json())
     .then(data => {
+      console.log('apod: ', data)
       // if a status code other than 200 is sent back
       if (data.error) {
         setLoading('');
@@ -182,43 +182,27 @@ const Single = () => {
   return (
     <div className='single-div'>
       <div className="upper-wrap">
-        <header className='single-header'>
-          <h1>Single APOD</h1>
-          <p>Select a single date or scroll with the buttons</p>
-        </header>
-        <div className="single-form-wrap">
-          {/* <form>
-            <div className="start-container">
-              <label htmlFor="single-date">Your date 
-              (earliest date: 06-16-1995): </label>
-              <input 
-                type="date" 
-                id="single-date" 
-                name="single-date" 
-                min="1995-06-16" 
-                max={todaysDate} 
-                value={userDate ? userDate : todaysDate} 
-                required='required' 
-                onChange={(e) => setUserDate(e.target.value)}
-              />
-            </div>   
-
-            
-          </form> */}
-          <DayPicker
-            mode='single'
-            selected={selected}
-            onSelect={setSelected}
-            month={month}
-            onMonthChange={setMonth}
-            footer={footer}
-            fromDate={earliest_date}
-            toDate={new Date()}
-            captionLayout='dropdown'
-            fixedWeeks
-          />
-        </div>
-        <button className="update-btn" onClick={handleDate}>Update picture</button>
+        <div className="inner-upper-wrap">
+          <header className='single-header'>
+            <h1>Single APOD</h1>
+            <p>Select a single date or scroll with the buttons</p>
+          </header>
+          <div className="single-form-wrap">
+            <DayPicker
+              mode='single'
+              selected={selected}
+              onSelect={setSelected}
+              month={month}
+              onMonthChange={setMonth}
+              footer={footer}
+              fromDate={earliest_date}
+              toDate={new Date()}
+              captionLayout='dropdown'
+              fixedWeeks
+            />
+          </div>
+          <button className="update-btn" onClick={handleDate}>Update picture</button>
+        </div>        
       </div>
       <div className="ui-text">{err 
         ? <div className="error-text">{err}</div> 

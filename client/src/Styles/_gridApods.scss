@@ -11,6 +11,7 @@
   .images-cont {
     display: grid;
     place-items: center;
+    align-content: baseline;
     padding: 1.25rem 0 2.5rem 0;
     gap: 3.5rem;
 

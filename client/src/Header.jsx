@@ -103,7 +103,7 @@ const Header = () => {
               ? <>
                   <li>
                     <NavLink
-                      to="/profile"
+                      to="/profile/favorites"
                       className={({ isActive }) => 
                         isActive ? 'active-link' : undefined  
                       }

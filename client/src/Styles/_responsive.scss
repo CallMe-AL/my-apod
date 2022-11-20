@@ -9,26 +9,30 @@
   .range-div {
 
     .selection-div {
-      padding-left: clamp(2rem, 6vw, 5rem);
-      grid-template-areas:
+      
+      .inner-selection-div {
+        grid-template-areas:
           "header calend"
           "button calend";
-
-      .selection-header {
-        margin-right: auto;
-        margin-bottom: 0rem;
-        margin-top: auto;
-        text-align: left;
+        padding-left: clamp(2rem, 6vw, 5rem);
+        
+        .selection-header {
+          margin-right: auto;
+          margin-bottom: 0rem;
+          margin-top: auto;
+          text-align: left;
+        }
+  
+        .date-div {
+          margin-bottom: 0;
+        }
+  
+        .update-btn {
+          margin-top: auto;
+          margin-right: auto;
+        }
       }
 
-      .date-div {
-        margin-bottom: 0;
-      }
-
-      .update-btn {
-        margin-top: auto;
-        margin-right: auto;
-      }
     }
 
     .jump-to-top-btn {
@@ -41,29 +45,31 @@
 
   // single div
   .single-div {
-    padding: 3rem 1.5rem;
 
     .upper-wrap {
-      padding-left: clamp(1.5rem, 5vw, 3rem);
-      grid-template-areas:
-          "header calend"
-          "button calend";
-
-      .single-header {
-        margin-right: auto;
-        margin-bottom: 0rem;
-        margin-top: auto;
-        line-height: 1.5;
-        text-align: left;
-    
-        h1 {
+      .inner-upper-wrap {
+        padding-left: clamp(1.5rem, 5vw, 3rem);
+        grid-template-areas:
+            "header calend"
+            "button calend";
+  
+        .single-header {
+          margin-right: auto;
           margin-bottom: 0rem;
+          margin-top: auto;
+          line-height: 1.5;
+          text-align: left;
+      
+          h1 {
+            margin-bottom: 0rem;
+          }
         }
-      }
+  
+        .update-btn {
+          margin-top: auto;
+          margin-right: auto;
+        }
 
-      .update-btn {
-        margin-top: auto;
-        margin-right: auto;
       }
     }
   
@@ -71,12 +77,11 @@
     .single-container {
       h2 {
         font-size: 2rem;
-        margin-bottom: 1rem;
       }
 
-      .__inner-wrap {
-        width: 400px;
-      }
+      // .__inner-wrap {
+      //   width: 400px;
+      // }
     }
   
   
@@ -215,24 +220,21 @@
 
   // single imgs
   .single-div {
-    padding: 3rem 1.5rem;
-    max-width: 900px;
-    margin: 0 auto;
-
     .upper-wrap {
-
-      .single-header {    
-        h1 {
-          font-size: 2.5rem;
-        }
+      .inner-upper-wrap {
+        .single-header {    
+          h1 {
+            font-size: 2.5rem;
+          }
+    
+          p {
+            font-size: 1.2rem;
+          }
   
-        p {
+        }
+        .update-btn {
           font-size: 1.2rem;
         }
-
-      }
-      .update-btn {
-        font-size: 1.2rem;
       }
     }
   
@@ -240,16 +242,15 @@
     .single-container {
       h2 {
         font-size: 3rem;
-        margin-bottom: 1rem;
       }
 
       p {
         margin-bottom: 1rem;
       }
 
-      .__inner-wrap {
-        width: 600px;
-      }
+      // .__inner-wrap {
+      //   width: 600px;
+      // }
     } 
   
   

@@ -1,53 +1,58 @@
 @use "_config.scss";
 
 .range-div {
-  padding-top: 3rem;
   width: 100%;
   position: relative;
 
   .selection-div {
-    margin-inline: auto;
-    margin-bottom: 1.5rem;
-    max-width: 1200px;
-    border-bottom: 1px solid white;
+    padding-top: 3rem;
+    border-bottom: 1px solid config.$border-bottoms;
     padding-bottom: 3rem;
+    @include config.radial-bg;
+    
 
-    display: grid;
-    grid-template-areas:
-      "header"
-      "calend"
-      "button";
-    justify-items: center;
+    .inner-selection-div {
+      display: grid;
+      grid-template-areas:
+        "header"
+        "calend"
+        "button";
+      justify-items: center;
+      max-width: 1200px;
+      margin-inline: auto;
+      margin-bottom: 1.5rem;
 
-    .selection-header {
-      margin-bottom: 2rem;
-      line-height: 1.5;
-      text-align: center;
-      grid-area: header;
-
-      h1 {
-        color: config.$primary-purple;
+      .selection-header {
+        margin-bottom: 2rem;
+        line-height: 1.5;
+        text-align: center;
+        grid-area: header;
+  
+        h1 {
+          color: config.$primary-purple;
+        }
+      }
+  
+      .date-div {
+        margin-bottom: 2rem;
+        grid-area: calend;
+  
+        .earliest-date {
+          margin-bottom: 1rem;
+        }
+  
+        .current-range {
+          height: 2.5rem;
+        }
+      }
+  
+      .update-btn {
+        @include config.button-styles;
+        padding: 0.8rem 2rem;
+        grid-area: button;
       }
     }
 
-    .date-div {
-      margin-bottom: 2rem;
-      grid-area: calend;
-
-      .earliest-date {
-        margin-bottom: 1rem;
-      }
-
-      .current-range {
-        height: 2.5rem;
-      }
-    }
-
-    .update-btn {
-      @include config.button-styles;
-      padding: 0.8rem 2rem;
-      grid-area: button;
-    }
   }
 
   .ui-text {

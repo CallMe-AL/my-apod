@@ -13,6 +13,7 @@ import Logout from './Routes/Logout';
 import RequireAuth from './RequireAuth';
 import RequireLogout from './RequireLogout';
 import VerifyEmail from './Routes/VerifyEmail';
+import AccountOptions from './Routes/AccountOptions';
 
 // styles
 import './Styles/main.scss';
@@ -27,6 +28,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 
 // firestore stuff
 import { collection, query, where, getDocs } from "firebase/firestore";
+import Favorites from './Routes/Favorites';
 
 function App() {
 
@@ -71,6 +73,7 @@ function App() {
                     favoriteApods,
                     isLoggedIn,
                     timeActive,
+                    setCurrentUser,
                     setFavoriteApods, 
                     setIsLoggedIn,
                     setTimeActive 
@@ -94,7 +97,10 @@ function App() {
                     <Profile />
                   </RequireAuth>
                 } 
-              />              
+              >
+                <Route path="options" element={<AccountOptions />} />
+                <Route path="favorites" element={<Favorites />} />
+              </Route>              
               {/* display logout page if user logged out */}
               <Route 
                 path="logout" 

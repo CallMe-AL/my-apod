@@ -1,46 +1,52 @@
 @use "_config.scss";
 
 .single-div {
-  padding: 3rem 1rem;
   width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
 
-  .upper-wrap {
-    display: grid;
-    grid-template-areas: 
+  .upper-wrap {    
+    padding-bottom: 4rem;
+    padding-top: 3rem;
+    padding-inline: 1rem;
+    border-bottom: 1px solid config.$border-bottoms;
+    @include config.radial-bg;
+
+    .inner-upper-wrap {
+      display: grid;
+      grid-template-areas:
         "header"
-        "calend"        
+        "calend"
         "button";
-    padding-bottom: 3rem;
-    justify-items: center;
-    border-bottom: 1px solid white;
+      justify-items: center;
+      max-width: 900px;
+      margin: 0 auto;
 
-    .single-header {
-      grid-area: header;
-      margin-bottom: 2.5rem;
-      text-align: center;
+      .single-header {
+        grid-area: header;
+        margin-bottom: 2.5rem;
+        text-align: center;
+    
+        h1 {
+          color: config.$primary-purple;
+          margin-bottom: 0.5rem;
+        }
+      }
+    
+      .single-form-wrap {
+        grid-area: calend;
+        
+    
+        .start-container {
+          margin-bottom: 3rem;
+        }
+      }
   
-      h1 {
-        color: config.$primary-purple;
-        margin-bottom: 0.5rem;
+      .update-btn {
+        grid-area: button;
+        margin-top: 2rem;
+        @include config.button-styles;
       }
     }
-  
-    .single-form-wrap {
-      grid-area: calend;
-      
-  
-      .start-container {
-        margin-bottom: 3rem;
-      }
-    }
 
-    .update-btn {
-      grid-area: button;
-      margin-top: 2rem;
-      @include config.button-styles;
-    }
   }
 
 
@@ -62,12 +68,17 @@
 
     h2 {
       color: config.$primary-purple;
-      margin-bottom: 1rem;
+      margin-bottom: clamp(1.5rem, 6.5vw, 3rem);
     }
 
     .__inner-wrap {
       margin: 0 auto;
-      width: 300px;
+      width: 100%;
+      max-width: 1200px;
+
+      // formerly width of 300px
+      // noting in case of future redicisions
+      // width 100% causes buttons to jump due to image resizing... but image quality MUCH better!!
       .inner-single-header {
         width: 100%;
         display: flex;

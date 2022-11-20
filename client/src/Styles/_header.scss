@@ -247,14 +247,17 @@
           border-radius: 25%;
           padding: 0.5rem 1rem;
 
+          &:hover {
+            .sign-out-icon {
+              color: config.$secondary-purple;
+            }
+            
+          }
+
           .sign-out-icon {
             font-size: 1.8rem;
             color: config.$light-white;
             transition: color 300ms ease-in-out;
-
-            &:hover {
-              color: config.$secondary-purple;
-            }
           }          
         }
       }

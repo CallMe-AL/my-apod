@@ -2,7 +2,7 @@
 @use "_gridApods.scss";
 
 .profile-wrap {
-  display: flex;
+  // display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -10,7 +10,8 @@
   width: 100%;
 
   .__inner-wrap {
-    border-bottom: 1px solid config.$border-color;
+    border-bottom: 1px solid config.$border-bottoms;
+    @include config.radial-bg;
     padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 6vw, 2rem);
     min-width: 300px;
     text-align: center;
@@ -46,14 +47,34 @@
       }
     }
 
+    .profile-nav {
+      margin-bottom: 2rem;
+
+      ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+
+        li {
+          a {
+            font-size: 1.2rem;
+            transition: color 300ms ease-in-out;
+            &:hover {
+              color: config.$secondary-purple;
+            }
+            &.active-link {
+              color: config.$primary-purple;
+            }
+          }
+        }
+      }
+    }
+
     .sign-out {
       @include config.account-button-styles;
       display: block;
-      margin: 0 auto 1rem auto;
-    }
-
-    .delete-act {
-      @include config.delete-btn-styles;
+      margin: 0 auto 0 auto;
     }
   }
 
@@ -115,5 +136,31 @@
     }
 
     // favorite styles included in gridApods
+  }
+
+  .account-wrap {
+    h2 {
+      text-align: center;
+      margin-bottom: clamp(2rem, 6.5vw, 4rem);
+    }
+
+    .pw-reset-container {
+
+      .reset-msg {
+        margin-bottom: 2rem;
+      }
+      
+      .reset-pw {
+        margin: 0 auto 2rem auto;
+        display: block;
+        @include config.button-styles;
+      }
+    }
+
+    .delete-act {
+      margin: auto auto 2.5rem auto;
+      display: block;
+      @include config.delete-btn-styles;
+    }
   }
 }

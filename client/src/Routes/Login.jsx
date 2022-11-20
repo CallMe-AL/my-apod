@@ -27,7 +27,7 @@ const Login = () => {
             .catch(err => alert(err.message))
         } else {
           // otherwise head to the homepage!
-          console.log(auth.currentUser)
+          // console.log(auth.currentUser)
           setIsLoggedIn(true);
           navigate('/')
         }

@@ -181,39 +181,28 @@ const Apodrange = () => {
   return (
     <div className="range-div">
       <div className="selection-div">
-        <header className="selection-header">
-          <h1>Select your range:</h1>
-          <p className='max-range'>Max range: 60 days (so far...)</p>
-        </header>    
-        <div className="date-div">
-          {/* <form>
-            <div className="start-container">
-              <label htmlFor="start">Start date 
-              (earliest date: 06-16-1995): </label>
-              <input type="date" id="start" name="apod-start" min="1995-06-16" max={endDate ? endDate : today} value={startDate} onChange={handleStartDate}/>
-            </div>
-            
-            <div className="end-container">
-              <label htmlFor="end">End date: </label>
-              <input type="date" id="end" name="apod-end" min={startDate ? startDate : '1995-06-17'} max={today} value={endDate} onChange={handleEndDate}/>
-            </div>            
-            
-          </form> */}
-          <DayPicker
-            mode='range'
-            max={60}
-            selected={range}
-            onSelect={setRange}
-            month={month}
-            onMonthChange={setMonth}
-            footer={footer}
-            fromDate={earliest_date}
-            toDate={new Date()}
-            captionLayout='dropdown'
-            fixedWeeks
-          />
+        <div className="inner-selection-div">
+          <header className="selection-header">
+            <h1>Select your range:</h1>
+            <p className='max-range'>Max range: 60 days (so far...)</p>
+          </header>    
+          <div className="date-div">
+            <DayPicker
+              mode='range'
+              max={60}
+              selected={range}
+              onSelect={setRange}
+              month={month}
+              onMonthChange={setMonth}
+              footer={footer}
+              fromDate={earliest_date}
+              toDate={new Date()}
+              captionLayout='dropdown'
+              fixedWeeks
+            />
+          </div>
+          <button className="update-btn" onClick={getPictures}>Update pictures</button>
         </div>
-        <button className="update-btn" onClick={getPictures}>Update pictures</button>
       </div>
       <div className="ui-text">{warning 
         ? <div className="warning-text">{warning}</div> 
