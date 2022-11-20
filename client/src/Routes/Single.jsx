@@ -219,36 +219,37 @@ const Single = () => {
             { isLoggedIn && <FavoriteButton apod={apod} /> }
           </div>
           {apod && <NasaObj apod={apod} changing={isChanging} />}
-        </div>      
+        </div>
+        {/* navigation buttons */}
+        {
+          apod &&
+            <div className="single-nav">
+                {/* hides button if on the earliest date */}
+                {apod.date !== '1995-06-16' && 
+                  <button className="change-day-btn previous-day" aria-label='go back a day' onClick={decreaseDay}>
+                    <FontAwesomeIcon icon={faChevronLeft} className="single-nav-icon-left" />
+                    Previous
+                  </button>        
+                }
+                {/* <CopyToClipboard 
+                  text={apod?.url}
+                  onCopy={() => setCoped(true)}>
+                  <span>Copy to clipboard here!</span>
+                </CopyToClipboard> */}
+                {/* hides button if on today's date */}
+                {apod.date !== todaysDate &&
+                  <button className="change-day-btn next-day" aria-label='go forward a day' onClick={increaseDay}>
+                    Next
+                    <FontAwesomeIcon icon={faChevronRight} className="single-nav-icon-right" />
+                  </button>        
+                }
+              </div>
+        }
+
+        {apod && <Info apod={apod} />}
+
       </div>
       
-      {/* navigation buttons */}
-      {
-        apod &&
-          <div className="single-nav">
-              {/* hides button if on the earliest date */}
-              {apod.date !== '1995-06-16' && 
-                <button className="change-day-btn previous-day" aria-label='go back a day' onClick={decreaseDay}>
-                  <FontAwesomeIcon icon={faChevronLeft} className="single-nav-icon-left" />
-                  Previous
-                </button>        
-              }
-              {/* <CopyToClipboard 
-                text={apod?.url}
-                onCopy={() => setCoped(true)}>
-                <span>Copy to clipboard here!</span>
-              </CopyToClipboard> */}
-              {/* hides button if on today's date */}
-              {apod.date !== todaysDate &&
-                <button className="change-day-btn next-day" aria-label='go forward a day' onClick={increaseDay}>
-                  Next
-                  <FontAwesomeIcon icon={faChevronRight} className="single-nav-icon-right" />
-                </button>        
-              }
-            </div>
-      }
-
-      {apod && <Info apod={apod} />}
     </div>
   )
 }

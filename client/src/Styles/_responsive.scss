@@ -435,6 +435,16 @@
 
 @include config.for-much-larger-desktop {
 
+  .single-div {
+    .__inner-wrap {
+      padding-inline: 0;
+    }
+
+    // .info-container {
+    //   padding-inline: 0;
+    // }
+  }
+
   .range-div {
     .info-div {
       margin-left: 20px;
