@@ -6,6 +6,7 @@
   flex-direction: column;
   margin: 0 auto;
   min-height: 80vh;
+  padding-inline: 1rem;
 
   .home-title {
     margin-bottom: 25px;
@@ -17,9 +18,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 1rem 1.875rem 1rem;
     width: 100%;
-    max-width: 75ch;
+    max-width: 70ch;
     margin: 0 auto;
     text-align: center;
 

@@ -60,7 +60,10 @@ function App() {
           temp_favs.push({ docId: doc.id, data: doc.data() });
         })
       })
-      .then(() => setFavoriteApods(temp_favs));
+      .then(() => {
+        temp_favs.sort((a, b) => (a.data.title > b.data.title) ? 1 : -1);
+        setFavoriteApods([...temp_favs])
+      });
 
   }, [isLoggedIn]);
 

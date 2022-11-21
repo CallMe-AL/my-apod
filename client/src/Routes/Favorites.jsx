@@ -8,7 +8,7 @@ import { useAuthValue } from '../AuthContext';
 
 const Favorites = () => {
 
-  const [sortValue, setSortValue] = useState('a-z');
+  const [sortValue, setSortValue] = useState(undefined);
   const [activeItem, setActiveItem] = useState('');
   const [activeApod, setActiveApod] = useState(null);
 
@@ -19,12 +19,7 @@ const Favorites = () => {
   // see here: https://support.mozilla.org/en-US/kb/xframe-neterror-page?as=u&utm_source=inproduct
   useEffect(() => {
     if (!isLoggedIn) return;
-
-    let stored_sort = sessionStorage.getItem('apod-sort');
-    if (stored_sort) {
-      setSortValue(stored_sort);
-      
-    }
+    
     const q = query(collection(db, 'fav_apods'), where("userId", "==", currentUser.uid));
     const temp_favs = [];
 
@@ -36,8 +31,15 @@ const Favorites = () => {
         })
       })
       .then(() => {
-        changeSorting(stored_sort, temp_favs);
-        setFavoriteApods(temp_favs)
+        let stored_sort = sessionStorage.getItem('apod-sort');
+        if (stored_sort) {
+          setSortValue(stored_sort);
+          changeSorting(stored_sort, temp_favs);
+        } else {
+          changeSorting('a-z', temp_favs);
+        }
+        console.log(temp_favs)      
+        setFavoriteApods([...temp_favs]);
       })
 
   }, [isLoggedIn]);

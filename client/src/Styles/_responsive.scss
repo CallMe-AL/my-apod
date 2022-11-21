@@ -5,6 +5,10 @@
   // today div 
   // --nothing yet!
 
+  //homepage 
+  .homepage-wrap {
+  }
+
   // range div
   .range-div {
 
@@ -205,6 +209,7 @@
 
   // homepage
   .homepage-wrap {
+    padding-inline: 0;
     .home-title {
       font-size: config.$h1-font;
     }
