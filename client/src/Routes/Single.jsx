@@ -133,7 +133,7 @@ const Single = () => {
     })
     .then(response => response.json())
     .then(data => {
-      console.log('apod: ', data)
+      // console.log('apod: ', data)
       // if a status code other than 200 is sent back
       if (data.error) {
         setLoading(false);

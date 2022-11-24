@@ -31,7 +31,7 @@ const Today = () => {
   useEffect(() => {
 
     if (!apod) return;
-    setLoading(true);
+    setLoading(false);
 
   }, [apod]);
 

@@ -9,14 +9,15 @@ const NasaObj = ({ apod, changing, loading }) => {
   const [showButton, setShowButton] = useState(false);
   const [clickText, setClickText] = useState('Click me!');
 
-  useEffect(() => {
-    if (!loading) {
-      setShowButton(false);
-    }
+  useEffect(() => {   
 
-    setTimeout(() => {
-      setShowButton(true);
-    }, 3000);
+    if (loading) {
+      const timeoutId = setTimeout(() => {
+        setShowButton(true);
+      }, 3000);
+      return () => clearTimeout(timeoutId);
+    };    
+
   }, [loading]);
 
   useEffect(() => {
@@ -46,6 +47,8 @@ const NasaObj = ({ apod, changing, loading }) => {
     }
 
   }, [clicks]);
+
+
 
   const openModal = () => {
     if (open) {
