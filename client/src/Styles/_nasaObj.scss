@@ -1,0 +1,99 @@
+@use "_config.scss";
+
+.apod-obj {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  border-radius: 5px;
+  // aspect-ratio: 1;
+  display: inline-block;
+  background: config.$tertiary-bg;
+  // border: 1px solid config.$border-bottoms;
+  
+  // backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // ** old styles
+  // position: relative;
+  //   width: 100%;
+  //   aspect-ratio: 1;
+  //   cursor: pointer;
+
+  .loading-div {
+    text-align: center;
+
+    img {
+      margin: 1rem auto 1rem auto;
+    }
+
+    .waiting-btn {
+      margin-top: 2rem;
+      font-weight: bold;
+      @include config.button-styles;
+    }
+  }
+
+  .apod-img {
+    opacity: 1;
+    transition: opacity 0.6s ease-in-out;
+    width: 100%;
+    // height: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    cursor: pointer;
+  
+    
+
+    &.changing {
+      opacity: 0;
+    }
+  }
+  
+  .apod-video {
+    opacity: 1;
+    transition: opacity 0.6s ease-in-out;
+    border: transparent;
+    width: 100%;
+    max-width: 560px;
+    aspect-ratio: 1;
+
+    &.changing {
+      opacity: 0;
+    }
+  }
+
+  @media (min-width: 750px) {
+    .apod-obj {
+      height: 600px;
+    }
+  }
+}
+
+@media (min-width: 750px) {
+  .apod-obj {
+    height: 450px;
+  }
+}
+
+@media (min-width: 950px) {
+  .apod-obj {
+    height: 650px;
+  }
+}
+
+@media (min-width: 1250px) {
+  .apod-obj {
+    height: 950px;
+  }
+}
+
+
+
+// .absolute {
+  
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+// }

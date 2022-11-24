@@ -22,7 +22,7 @@
 
       .single-header {
         grid-area: header;
-        margin-bottom: 2.5rem;
+        padding-block: 2.5rem;
         text-align: center;
     
         h1 {
@@ -88,55 +88,178 @@
       // width 100% causes buttons to jump due to image resizing... but image quality MUCH better!!
       .inner-single-header {
         width: 100%;
-        max-width: 800px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        margin: 0 auto 1rem auto;
+        justify-content: flex-end;
+        margin-bottom: 1rem;
         
+      }
+
+      .__lower-container {
+        display: flex;
+        align-items: center;
+        margin: 2rem auto 3rem 0;
+        justify-content: flex-end;
+
+        p {
+          margin-bottom: 0;
+          margin-right: clamp(1rem, 3.5vw, 2rem);
+          font-weight: bold;
+        }
+
+        .calendar-container {
+          margin-right: clamp(2rem, 6vw, 4rem);
+
+          .__btn {
+            padding: 0.6rem;
+            background-color: transparent;
+            border: transparent;
+            color: white;
+            font-size: 1rem;
+          }
+
+          section {
+
+            .__inner-calendar {
+              border: 1px solid config.$border-color;
+              padding-block: 1.5rem;
+              border-radius: 0.5rem;
+  
+              .upper-modal-container {
+                padding-inline: 2rem;
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+  
+                h3 {
+                  text-align: left;
+                }
+  
+                .close-modal {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  padding: 0.5rem;
+                  color: white;
+                  font-size: 1.2rem;
+                  background-color: transparent;
+                  border: transparent;
+                }
+  
+              }
+  
+  
+              // mobile styles
+              &.mobile {
+                display: block;
+                position: fixed;
+                z-index: 2500;
+                top: 2rem;
+                left: 50%;
+                width: 100%;
+                max-width: 800px;
+                background-color: config.$background-color;
+                transform: translate(-50%, 300%);
+                transition: transform 300ms ease-in-out;
+  
+                &.open {
+                  transform: translate(-50%, 0);
+                }
+              }
+
+              // desktop styles
+              &.desktop {
+                display: none;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                background: config.$background-color;
+                box-shadow: 0 0 8px rgba(190, 190, 190, 0.8);
+              }
+  
+              .picker-container {
+                display: flex;
+                justify-content: center;
+              }
+            }
+          }
+          
+
+          .lower-mobile-container {
+            margin-top: 1rem;
+            border-top: 1px solid config.$border-bottoms;
+
+            .update-btn {
+              margin-top: 2rem;
+              @include config.button-styles;
+            }
+          }
+
+          .mobile-calendar-overlay {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 2000;
+            background-color: rgba(34, 34, 34, 0.3);
+            backdrop-filter: blur(10px);
+            height: 100vh;
+            width: 100%;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 500ms ease-in-out;
+
+            &.open {
+              opacity: 1;
+              pointer-events: all;
+            }
+          }
+
+        }
+
+        .single-nav {
+          display: flex;
+          align-items: center;
+          gap: clamp(1rem, 6.5vw, 2rem);
+      
+          .change-day-btn {
+            transition: background-color 300ms ease-in-out;
+            background-color: transparent;
+            border: 1px solid config.$border-color;
+            color: white;
+            border-radius: 50%;
+            font-size: 1rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            padding: 0.8rem;
+      
+            .single-nav-icon {
+              transition: transform 300ms ease-out, color 300ms ease-in-out;
+            }
+      
+            &:hover {
+              background-color: darken(config.$border-color, 20%);
+              .single-nav-icon {
+                color: black;
+              }
+              .single-nav-icon.left {
+                transform: translateX(-0.3rem);
+                transition: transform 500ms ease-out;
+              }
+              
+              .single-nav-icon.right {
+                transform: translateX(0.3rem);
+                transition: transform 500ms ease-out;
+              }
+            }
+          }
+        }
       }
     }
 
-    .single-nav {
-      max-width: 300px;
-      margin: 2rem auto clamp(3rem, 7vw, 4.5rem) auto;
-      display: flex;
-      justify-content: space-between;
-  
-      .change-day-btn {
-        padding: 0;
-        background-color: transparent;
-        border: none;
-        color: white;
-        border-radius: 1rem;
-        font-size: 0.9rem;
-        font-weight: 700;
-        display: flex;
-        justify-content: center;
-  
-        .single-nav-icon-left {
-          padding-right: 0.5rem;
-          transition: all 500ms ease-out;
-        }
-  
-        .single-nav-icon-right {
-          padding-left: 0.5rem;
-          transition: all 500ms ease-out;
-        }
-  
-        &:hover {
-          .single-nav-icon-left {
-            transform: translateX(-0.3rem);
-            transition: transform 500ms ease-out;
-          }
-          
-          .single-nav-icon-right {
-            transform: translateX(0.3rem);
-            transition: transform 500ms ease-out;
-          }
-        }
-      }
-    }
+
   
     .info-container {
       padding-bottom: 2.5rem;

@@ -23,8 +23,10 @@ const Header = () => {
   const toggleNav = () => {
     if (!mobileOpen) {
       setMobileOpen(true);
+      document.body.style.overflow = 'hidden';
     } else {
       setMobileOpen(false);
+      document.body.style.overflow = 'unset';
     }
   }
 

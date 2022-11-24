@@ -4,7 +4,7 @@ import { BASE_API_URL } from '../utils/constants';
 import NasaObj from '../NasaObj';
 import Info from '../Info';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faArrowRight, faCalendarAlt, faClose } from '@fortawesome/free-solid-svg-icons';
 // import {CopyToClipboard} from 'react-copy-to-clipboard';
 import FavoriteButton from '../FavoriteButton';
 import { useAuthValue } from '../AuthContext';
@@ -20,10 +20,13 @@ const Single = () => {
   const [err, setErr] = useState(null);
   const [todaysDate, setTodaysDate] = useState('');
   const [userDate, setUserDate] = useState(null);
-  const [loading, setLoading] = useState('');
+  const [loading, setLoading] = useState(false);
   const [isChanging, setIsChanging] = useState(false);
   // const [copyText, setCopyText] = useState('');
   // const [copied, setCoped] = useState(false);
+
+  // modal stuff
+  const [isOpen, setIsOpen] = useState(false);
 
   // date picker stuff
   const [selected, setSelected] = useState(new Date());
@@ -70,9 +73,12 @@ const Single = () => {
 
   const handleDate = (e) => {
     e.preventDefault();
-    setLoading('Loading...');
+    setLoading(true);
     getPhoto(userDate);
     setUserDate(userDate);
+    if (isOpen) {
+      setIsOpen(false);
+    }
   }
 
   const increaseDay = () => {
@@ -121,7 +127,7 @@ const Single = () => {
   }
 
   const getPhoto = (date) => {
-    setLoading('Loading...');
+    setLoading(true);
     fetch(`${BASE_API_URL}/api/single-img?date=${date}`, {
       method: 'GET'
     })
@@ -130,11 +136,11 @@ const Single = () => {
       console.log('apod: ', data)
       // if a status code other than 200 is sent back
       if (data.error) {
-        setLoading('');
+        setLoading(false);
         setApod(null);
         setErr(data.error);
       } else {
-        setLoading('');
+        setLoading(false);
         setApod(data);
         setErr(null);
         localStorage.setItem('singleDay', JSON.stringify(data));
@@ -172,6 +178,16 @@ const Single = () => {
     }, 1700);
   }
 
+  const handleModal = () => {
+    if (isOpen) {
+      setIsOpen(false);
+      document.body.style.overflow = 'unset';
+    } else {
+      setIsOpen(true);
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
   // date picker footer
   let footer = (
     <>
@@ -185,66 +201,116 @@ const Single = () => {
         <div className="inner-upper-wrap">
           <header className='single-header'>
             <h1>Single APOD</h1>
-            <p>Select a single date or scroll with the buttons</p>
+            <p>Check out any APOD, one at a time</p>
           </header>
-          <div className="single-form-wrap">
-            <DayPicker
-              mode='single'
-              selected={selected}
-              onSelect={setSelected}
-              month={month}
-              onMonthChange={setMonth}
-              footer={footer}
-              fromDate={earliest_date}
-              toDate={new Date()}
-              captionLayout='dropdown'
-              fixedWeeks
-            />
-          </div>
-          <button className="update-btn" onClick={handleDate}>Update picture</button>
         </div>        
       </div>
       <div className="ui-text">{err 
         ? <div className="error-text">{err}</div> 
-        : <div className="loading-text">{loading}</div>
+        : undefined
       }
-      </div>
-      
+      </div>      
       
       <div className="single-container">
         <h2>{apod ? apod.title : 'Choose an image'}</h2>
-        <div className="__inner-wrap">
+        <div className="__inner-wrap">            
           <div className="inner-single-header">
-            <p>{apod && apod.date}</p>
             { isLoggedIn && <FavoriteButton apod={apod} /> }
           </div>
-          {apod && <NasaObj apod={apod} changing={isChanging} />}
-        </div>
-        {/* navigation buttons */}
+          {apod && <NasaObj apod={apod} changing={isChanging} loading={loading} />}
         {
           apod &&
-            <div className="single-nav">
-                {/* hides button if on the earliest date */}
-                {apod.date !== '1995-06-16' && 
-                  <button className="change-day-btn previous-day" aria-label='go back a day' onClick={decreaseDay}>
-                    <FontAwesomeIcon icon={faChevronLeft} className="single-nav-icon-left" />
-                    Previous
-                  </button>        
-                }
-                {/* <CopyToClipboard 
-                  text={apod?.url}
-                  onCopy={() => setCoped(true)}>
-                  <span>Copy to clipboard here!</span>
-                </CopyToClipboard> */}
-                {/* hides button if on today's date */}
-                {apod.date !== todaysDate &&
-                  <button className="change-day-btn next-day" aria-label='go forward a day' onClick={increaseDay}>
-                    Next
-                    <FontAwesomeIcon icon={faChevronRight} className="single-nav-icon-right" />
-                  </button>        
-                }
+            <div className="__lower-container">
+              <p>{apod && apod.date}</p>
+              <div className="calendar-container">
+                <button className="__btn" onClick={handleModal} aria-label='Open calendar to pick a date'><FontAwesomeIcon icon={faCalendarAlt} /></button>
+                {/* mobile popup */}
+                <div className={`mobile-calendar-overlay ${isOpen ? 'open' : ''}`}></div>
+                <section aria-modal={true}>
+                  <div className={`__inner-calendar mobile ${isOpen ? 'open' : ''}`} >
+                    <div className="upper-modal-container">
+                      <h3>Pick a date</h3>
+                      <button 
+                        className="close-modal" 
+                        aria-label='close modal' 
+                        onClick={handleModal}>
+                          <FontAwesomeIcon icon={faClose} />
+                      </button>
+                    </div>                    
+                    <div className="picker-container">
+                      <DayPicker
+                        mode='single'
+                        selected={selected}
+                        onSelect={setSelected}
+                        month={month}
+                        onMonthChange={setMonth}
+                        footer={footer}
+                        fromDate={earliest_date}
+                        toDate={new Date()}
+                        captionLayout='dropdown'
+                        fixedWeeks
+                      />
+                    </div>                  
+                    <div className="lower-mobile-container">
+                      <button className="update-btn" onClick={handleDate}>Update Picture</button>
+                    </div>
+                  </div>                  
+                </section>
+                {/* desktop popup */}
+                <section aria-modal={true}>
+                  <div className={`__inner-calendar desktop ${isOpen ? 'open' : ''}`}>
+                    <div className="upper-modal-container">
+                      <h3>Pick a date</h3>
+                      <button 
+                        className="close-modal" 
+                        aria-label='close modal' 
+                        onClick={handleModal}>
+                          <FontAwesomeIcon icon={faClose} />
+                      </button>
+                    </div> 
+                    <div className="picker-container">
+                      <DayPicker
+                        mode='single'
+                        selected={selected}
+                        onSelect={setSelected}
+                        month={month}
+                        onMonthChange={setMonth}
+                        footer={footer}
+                        fromDate={earliest_date}
+                        toDate={new Date()}
+                        captionLayout='dropdown'
+                        fixedWeeks
+                      />
+                    </div>
+                    <div className="lower-mobile-container">
+                      <button className="update-btn" onClick={handleDate}>Update Picture</button>
+                    </div>
+                  </div>
+                </section>
               </div>
+              <div className="single-nav">
+                  {/* hides button if on the earliest date */}
+                  {apod.date !== '1995-06-16' && 
+                    <button className="change-day-btn previous-day" aria-label='go back a day' onClick={decreaseDay}>
+                      <FontAwesomeIcon icon={faArrowLeft} className="single-nav-icon left" />
+                    </button>        
+                  }
+                  {/* <CopyToClipboard 
+                    text={apod?.url}
+                    onCopy={() => setCoped(true)}>
+                    <span>Copy to clipboard here!</span>
+                  </CopyToClipboard> */}
+                  {/* hides button if on today's date */}
+                  {apod.date !== todaysDate &&
+                    <button className="change-day-btn next-day" aria-label='go forward a day' onClick={increaseDay}>
+                      <FontAwesomeIcon icon={faArrowRight} className="single-nav-icon right" />
+                    </button>        
+                  }
+                </div>
+            </div>
         }
+
+        </div>
 
         {apod && <Info apod={apod} />}
 

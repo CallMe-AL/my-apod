@@ -1,9 +1,21 @@
+@use "_config.scss";
+
 .favorite-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(208, 214, 224, 0.5);
+  border-radius: 8px;
   background-color: transparent;
-  border-color: transparent;
-  width: 1.8rem;
+  color: white;
+  // transition: background-color 800ms ease-in-out;
 
   &.favorited {
+    background-color: config.$tertiary-bg;
+    border-color: config.$border-bottoms;
     .heart {
       fill: red;
     }
@@ -19,8 +31,10 @@
     stroke: red;
     stroke-width: 1.5px;
     fill: transparent;
-    width: 100%;
+    height: auto;
+    width: 1.2rem;
     overflow: visible; // flex will clip the edges otherwise
+    margin-right: 0.6rem;
 
     &:hover {
       cursor: pointer;

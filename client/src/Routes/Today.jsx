@@ -12,6 +12,7 @@ const Today = () => {
 
   const [apod, setApod] = useState(null);
   const [err, setErr] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   let date = new Date();
   const today = useGetDate(date);
@@ -27,26 +28,27 @@ const Today = () => {
     }
   }, [data]);
 
-  if (!apod) {
-    return (
-    <div className='today-wrap'>
-      {err 
-        ? err.error
-        : 'Loading...'
-      }
-      <div className="loader"></div>
-    </div>)
-  }
+  useEffect(() => {
+
+    if (!apod) return;
+    setLoading(true);
+
+  }, [apod]);
 
   return (
     <div className='today-wrap'>
-      <h1>{apod.title}</h1>
+      <h1>{apod?.title}</h1>
       <div className={`subhead-wrap ${isLoggedIn ? 'space-between' : ''}`}>
-        <p className='current-date'>Date (year/month/day): {apod.date}</p>
+        <p className='current-date'>Date (year/month/day): {apod?.date}</p>
         { isLoggedIn && <FavoriteButton apod={apod} /> }     
       </div>
 
-      {apod ? <NasaObj apod={apod} /> : <div className='loader'>Loading...</div>}
+      {
+        err
+        ? err
+        : <NasaObj apod={apod} loading={loading} />
+      }
+      
 
       {apod && <Info apod={apod} />}
     </div>

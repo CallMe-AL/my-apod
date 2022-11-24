@@ -1,5 +1,4 @@
 @use "_about.scss";
-@use "_apodobj.scss";
 @use "_apodrange.scss";
 @use "_config.scss";
 @use "_deleteProfileModal.scss";
@@ -15,6 +14,7 @@
 @use "_profile.scss";
 @use "_register.scss";
 @use "_single.scss";
+@use "_nasaObj.scss";
 @use "_today.scss";
 @use "_verify.scss";
 
@@ -30,7 +30,7 @@
 }
 
 html {
-  overflow: auto;
+  // overflow: auto;
   // font-size: min(max(1rem, 4vw), 22px);
 }
 

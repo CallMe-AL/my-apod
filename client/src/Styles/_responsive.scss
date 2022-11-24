@@ -83,36 +83,18 @@
         font-size: 2rem;
       }
 
-      // .__inner-wrap {
-      //   width: 400px;
-      // }
-    }
-  
-  
-  
-    .single-nav {
-      max-width: 400px;
-      margin: 2rem auto 3rem auto;
-  
-  
-      .change-day-btn {
-        padding: 0;
-        background-color: transparent;
-        border: none;
-        color: white;
-        border-radius: 1rem;
-  
-        .single-nav-icon-left {
-          margin-right: 0.5rem;
-          transition: all 500ms ease-out;
-        }
-  
-        .single-nav-icon-right {
-          margin-left: 0.5rem;
-          transition: all 500ms ease-out;
+      .__inner-wrap {
+        .__lower-container {
+
+          .single-nav {
+            max-width: 400px;
+          }
         }
       }
     }
+  
+    
+  
   }
 
   // footer
@@ -128,6 +110,11 @@
 }
 
 @include config.for-larger-desktop {
+  body {
+    // prevents scroll lock when date-picker is open in single date
+    overflow: unset!important;
+  }
+
   // main header
     .main-header {
       .header-wrap {
@@ -253,41 +240,55 @@
         margin-bottom: 1rem;
       }
 
-      // .__inner-wrap {
-      //   width: 600px;
-      // }
-    } 
-  
-  
-    .single-nav {
-      max-width: 600px;
-      margin-bottom: 3.5rem;
-  
-  
-      .change-day-btn {
-        font-size: 1rem;
-  
-        .single-nav-icon-left {
-          margin-right: 0.5rem;
-          transition: all 500ms ease-out;
-        }
-  
-        .single-nav-icon-right {
-          margin-left: 0.5rem;
-          transition: all 500ms ease-out;
-        }
+      .__inner-wrap {
 
-        &:hover {
-          .single-nav-icon-left {
-            transform: translateX(-0.5rem);
+        .__lower-container {
+
+          p {
+            font-size: 1.2rem;
           }
+
+          .calendar-container {
+            .__btn {
+              font-size: 1.2rem;
+            }
+
+            .mobile-calendar-overlay {
+              display: none;
+            }
+
+            section {
+              position: relative;
+              .__inner-calendar {
+                &.mobile {
+                  display: none;
+                }
+                &.desktop {
+                  &.open {
+                    display: block;
+                  }
+                }
+              }
+            }
+          }
+  
+          .single-nav {
+            max-width: 600px;
         
-          .single-nav-icon-right {
-            transform: translateX(0.5rem);
+        
+            .change-day-btn {
+              font-size: 1.5rem;
+              padding: 1rem;
+            }
           }
         }
       }
-    }
+
+
+
+    } 
+  
+  
   }
 
   // apod range
