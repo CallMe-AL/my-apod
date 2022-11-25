@@ -225,7 +225,7 @@ const Single = () => {
               <div className="calendar-container">
                 <button className="__btn" onClick={handleModal} aria-label='Open calendar to pick a date'><FontAwesomeIcon icon={faCalendarAlt} /></button>
                 {/* mobile popup */}
-                <div className={`mobile-calendar-overlay ${isOpen ? 'open' : ''}`}></div>
+                <div onClick={handleModal} className={`mobile-calendar-overlay ${isOpen ? 'open' : ''}`}></div>
                 <section aria-modal={true}>
                   <div className={`__inner-calendar mobile ${isOpen ? 'open' : ''}`} >
                     <div className="upper-modal-container">
