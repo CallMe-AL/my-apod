@@ -3,6 +3,7 @@ const Modal = ({ apod, open, setOpen }) => {
   const closeModal = (e) => {
     if (!e.target.classList.contains('modal-img')) {
       setOpen(false);
+      document.body.style.overflow = 'unset';
     }
   }
 
