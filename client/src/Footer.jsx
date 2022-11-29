@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { faYoutube, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
 
 const Footer = () => {
 
@@ -12,17 +12,17 @@ const Footer = () => {
         <h2 className="sr-only" data-name="h2-sr-only-follow-us-on-our-social-media-channels"></h2>
         <ul className="footer-social-links">
           <li>
-            <a href="#" className="footer-link" aria-label="twitter">
-              <FontAwesomeIcon icon={faTwitter} className='brand-icon' />
+            <a href="https://www.youtube.com/NASA" className="footer-link" aria-label="nasa's official YouTube" title="NASA's official YouTube">
+              <FontAwesomeIcon icon={faYoutube} className='brand-icon' />
             </a>
           </li>
           <li>
-            <a href="#" className="footer-link" aria-label="facebook">
+            <a href="https://www.facebook.com/NASA/" className="footer-link" aria-label="nasa's official facebook" title="NASA's official Facebook">
               <FontAwesomeIcon icon={faFacebook} className='brand-icon' />
             </a>
           </li>
           <li>
-            <a href="#" className="footer-link" aria-label="instagram">
+            <a href="https://www.instagram.com/p/ClWzGJ9SdoM/" className="footer-link" aria-label="nasa's official instagram" title="NASA's official Instagram">
               <FontAwesomeIcon icon={faInstagram} className='brand-icon' />
             </a>
           </li>

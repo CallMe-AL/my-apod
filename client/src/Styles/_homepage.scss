@@ -1,41 +1,52 @@
 @use "_config.scss";
 
 .homepage-wrap {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin: 0 auto;
   min-height: 80vh;
-  padding-inline: 1rem;
+  background: config.$starry-bg;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
 
-  .home-title {
-    margin-bottom: 25px;
-    text-align: center;
-  }
-
-  .main-apod-cont {
+  .__inner-wrap {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 70ch;
-    margin: 0 auto;
-    text-align: center;
+    flex-direction: column;
+    height: 100%;
+    padding-inline: 1rem;
 
-    p {
-      margin-bottom: 1rem;
-      line-height: 1.5;
-      color: rgb(199, 199, 199);
+    .home-title {
+      margin-bottom: 2.5rem;
+      text-align: center;
     }
-
-    p:nth-child(2) {
-      margin-bottom: 3rem;
-    }
-
-    .homepage-link {
-      @include config.page-links;
-      padding: 0.8rem clamp(2rem, 5vw, 5rem);
+  
+    .main-apod-cont {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 70ch;
+      margin: 0 auto;
+      text-align: center;
+  
+      p {
+        margin-bottom: 1.2rem;
+        line-height: 1.4;
+        // color: #8b949e;
+        color: #c7c8c9;        
+        font-weight: 600;
+        font-size: clamp(1rem, 4.5vw, 1.2rem);
+        z-index: 1;
+      }
+  
+      p:nth-child(2) {
+        margin-bottom: 3rem;
+      }
+  
+      .homepage-link {
+        @include config.page-links;
+        padding: 0.8rem clamp(2rem, 5vw, 5rem);
+      }
     }
   }
 }

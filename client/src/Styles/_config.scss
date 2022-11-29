@@ -1,12 +1,13 @@
 // colors
-$primary-color: #3d72a4;
-$primary-active: #6092c2;
 $delete-color: rgb(255, 75, 75);
 // $background-color: #18191a;
 // $background-color: rgb(79, 82, 180);
 $background-color: rgb(0, 2, 18);
+$hover-bg: #131629;
+$hover-bc: #292B40;
 // $secondary-bg: #252526;
 $secondary-bg: transparent;
+$starry-bg: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
 $tertiary-bg: rgba(93, 96, 100, 0.1);
 $border-color: rgb(190, 190, 190);
 $border-bottoms: rgba(208, 214, 224, 0.2);

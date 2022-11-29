@@ -112,7 +112,7 @@
 
           .__btn {
             padding: 0.8rem;
-            transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+            transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out;
             background-color: transparent;
             border: transparent;
             color: white;
@@ -124,8 +124,8 @@
             align-items: center;
 
             &:hover {
-              background-color: darken(config.$border-color, 20%);
-              color: black;
+              background-color: config.$hover-bg;
+              border-color: config.$hover-bc;
             }
           }
 
@@ -235,7 +235,7 @@
           gap: clamp(1rem, 6.5vw, 2rem);
       
           .change-day-btn {
-            transition: background-color 300ms ease-in-out;
+            transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out;
             background-color: transparent;
             border: 1px solid config.$border-color;
             color: white;
@@ -251,10 +251,8 @@
             }
       
             &:hover {
-              background-color: darken(config.$border-color, 20%);
-              .single-nav-icon {
-                color: black;
-              }
+              background-color: config.$hover-bg;
+              border-color: config.$hover-bc;
               .single-nav-icon.left {
                 transform: translateX(-0.3rem);
                 transition: transform 500ms ease-out;
