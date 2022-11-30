@@ -6,6 +6,12 @@
   width: 100%;
   position: relative;
   overflow: hidden;
+  
+  .stars-wrap {
+    width: 100%;
+    max-width: 2000px;
+    margin: 0 auto;
+  }
 
   .__inner-wrap {
     display: flex;

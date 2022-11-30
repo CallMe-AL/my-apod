@@ -5,9 +5,11 @@ const Homepage = () => {
     <div className='homepage-wrap'>
       {/* starry background by nazar azhar's codepen */}
       {/* https://codepen.io/NazarAzhar/pen/QNzRZp */}
-      <div id='stars'></div>
-      <div id='stars2'></div>
-      <div id='stars3'></div>
+      <div className="stars-wrap">
+        <div id='stars'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
+      </div>
       {/* <div id='title'></div> */}
       <div className="__inner-wrap">
         <h1 className="home-title">Customize your APOD experience</h1>
