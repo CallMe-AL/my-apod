@@ -78,6 +78,7 @@ const Single = () => {
     setUserDate(userDate);
     if (isOpen) {
       setIsOpen(false);
+      document.body.style.overflow = 'unset';
     }
   }
 
