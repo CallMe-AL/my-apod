@@ -38,7 +38,7 @@ const Favorites = () => {
         } else {
           changeSorting('a-z', temp_favs);
         }
-        console.log(temp_favs)      
+        // console.log(temp_favs)      
         setFavoriteApods([...temp_favs]);
       })
 

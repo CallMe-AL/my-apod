@@ -67,6 +67,7 @@ const Single = () => {
       setUserDate(today);
       setSelected(new Date());
       setMonth(new Date());
+      getPhoto(today);
     }
 
   }, []);
