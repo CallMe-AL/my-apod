@@ -23,10 +23,10 @@ const Modal = ({ apod, open, setOpen }) => {
       // if image is larger than the viewport, shrink height and width by a certain percentage
       if (img.height > window.innerHeight) {
         let percentage = window.innerHeight / img.height;
-        // on mobile, shrink by an additional 10%
+        // on mobile, shrink by an additional 8%
         // otherwise user can't click off the image!
         if (window.innerWidth < 450) {
-          percentage = percentage - 0.10;
+          percentage = percentage - 0.08;
         }
         setUseHeight(img.height * percentage)
         setUseWidth(img.width * percentage)
