@@ -57,7 +57,7 @@ const Single = () => {
       setUserDate(obj.date);
       setApod(obj);
       let new_date = new Date(obj.date + 'T23:00:00.000');
-      console.log('selected: ', new_date);
+      // console.log('selected: ', new_date);
       setSelected(new_date);
       setMonth(new_date);
     } else {

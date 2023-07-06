@@ -182,7 +182,8 @@
   .modal-overlay {
 
     .close-modal-btn {
-      font-size: 2.5rem;
+      font-size: 2rem;
+      right: 0;
       &:hover {
         @include config.slow-transition;
         color: config.$secondary-purple;

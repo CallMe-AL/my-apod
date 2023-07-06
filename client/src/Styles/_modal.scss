@@ -24,11 +24,8 @@
     position: relative;
     margin: 0 auto;
     width: 100%;
-    max-width: 1200px;
-    max-height: 1000px;
     box-shadow: 0 0 5px white;
     border-radius: 25px;
-    
 
     .modal-img {
       display: block;
@@ -45,8 +42,8 @@
     border: none;
     font-size: 2rem;
     position: absolute;
-    bottom: clamp(-15rem, -6.5vw, -3.5rem);
-    right: 50%;
+    top: clamp(-15rem, -6vw, -3rem);
+    right: 7%;
     transform: translateX(50%);
   }
 }

@@ -80,13 +80,13 @@
 
 @media (min-width: 950px) {
   .apod-obj {
-    height: 650px;
+    height: clamp(600px, 70vw, 899px);
   }
 }
 
 @media (min-width: 1250px) {
   .apod-obj {
-    height: 950px;
+    height: 900px;
   }
 }
 
