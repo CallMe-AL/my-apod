@@ -17,9 +17,20 @@ const Modal = ({ apod, open, setOpen }) => {
     if (!apod) return;
     const img = new Image();
     img.src = apod.url;
+    console.log(window.innerHeight)
   
     img.onload = () => {
-      if (img.width > 1200) {
+      // if image is larger than the viewport, shrink height and width by a certain percentage
+      if (img.height > window.innerHeight) {
+        let percentage = window.innerHeight / img.height;
+        // on mobile, shrink by an additional 10%
+        // otherwise user can't click off the image!
+        if (window.innerWidth < 450) {
+          percentage = percentage - 0.10;
+        }
+        setUseHeight(img.height * percentage)
+        setUseWidth(img.width * percentage)
+      } else if (img.width > 1200) {
         setUseWidth(1200);
         setUseHeight(1000)
       } else {
